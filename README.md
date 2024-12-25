@@ -5,31 +5,37 @@ This app is meant to help free-to-play (F2P) players see if they meet the charac
 
 Each season, the number of eligible characters each player has varies. Thus, it is paramount to plan ahead and pick the right characters to avoid being locked out of an Imaginarium Theater stage.
 
-
-
 ## Counting Characters
-Characters are counted in 3 steps:
+
+First, characters must be at least level 70 in order to be eligible. The following steps assume you have already filtered down your character list to those level 70 and above.
+
+Characters are counted in 4 steps:
 - Alternate Cast Elements
-- Special Invitations
 - Opening Characters
+- Special Invitations
+- Traveler
 
 ### Alternate Cast Elements
 Each season, there are 3 alternate cast elements. Characters of these elements can generally be used in the season. Since the 3 elements rotate every season, it is generally a good idea to ensure that you don't have too few characters in a particular element.
 
-### Special Invitations
-Next, there will be 4 Special Invitation characters. These characters are guaranteed to have elements _**outside**_ of the alternate cast elements mentioned above. However, they can be used **only if a player has them**.
-
 ### Opening Characters
-Next, there will be 6 opening characters. These characters are guaranteed to have elements matching the alternate cast elements mentioned above. In addition, they are available for everyone to use, **even if a player doesn't have them**.
+Next, there will be 6 opening characters. These characters are guaranteed to have elements within the alternate cast elements mentioned above. In addition, they are available for everyone to use, **even if a player doesn't have them**.
 
 Thus, it is better for a player _**not**_ to have the opening characters as the overlap doesn't help increase their character count.
+
+### Special Invitations
+Next, there will be 4 special invitation characters. These characters are guaranteed to have elements _**outside of**_ the alternate cast elements mentioned above. However, they can be used **only if a player has them**.
+
+### Traveler
+Finally, since we already have 5 available Traveler elements and out of the 7 elements, 3 must be selected each season, Traveler is **always** usable as an additional character.
 
 ### Putting it all together
 
 The general formula for counting is as follows:
 1. **Count** the number of characters you have with any of the 3 alternate cast elements
-2. **Add** the number of characters you have matching the 4 special invitation characters
-3. **Subtract** the number of characters you have matching the 6 opening characters
+2. **Subtract** the number of characters you have matching the 6 opening characters
+3. **Add** the number of characters you have matching the 4 special invitation characters
+4. **Add** 1 character for Traveler
 
 The final number of characters you have is then compared against the table below:
 
