@@ -3,7 +3,7 @@ from datetime import datetime
 
 
 def test_init():
-    test_season = Season("202502")
+    test_season = Season("February 2025")
 
     assert test_season.date == datetime(2025, 2, 1).date()
 
@@ -28,7 +28,7 @@ def test_init():
 
 
 def test_count_elig_characters():
-    test_season = Season("202501")
+    test_season = Season("January 2025")
 
     test_character_inventory = []
     assert test_season.count_elig_characters_in(test_character_inventory) == 6

@@ -4,10 +4,11 @@ import pandas as pd
 
 
 class Season:
-    def __init__(self, date_str: str):
-        self.date = datetime.strptime(date_str, "%Y%m").date()
+    def __init__(self, date_label: str):
+        self.date = datetime.strptime(date_label, "%B %Y").date()
+        date_num = datetime.strftime(self.date, "%Y%m")
         seasons = data.load.seasons()
-        selected_season = seasons[seasons["date"] == date_str].melt(
+        selected_season = seasons[seasons["date"] == date_num].melt(
             id_vars=["date"], var_name="field"
         )
         self.alt_cast_elements = Season._pull_alt_cast_elements_from(selected_season)
