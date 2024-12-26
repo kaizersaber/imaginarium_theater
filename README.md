@@ -5,6 +5,8 @@ This app is meant to help free-to-play (F2P) players see if they meet the charac
 
 Each season, the number of eligible characters each player has varies. Thus, it is paramount to plan ahead and pick the right characters to avoid being locked out of an Imaginarium Theater stage.
 
+Try it out: [Imaginarium Theater Character Counter](https://kaizersaber.github.io/imaginarium_theater/)!
+
 ## Counting Characters
 
 First, characters must be at least level 70 in order to be eligible. The following steps assume you have already filtered down your character list to those level 70 and above.
