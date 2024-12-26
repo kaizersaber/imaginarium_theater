@@ -1,5 +1,6 @@
 from shiny.express import render, input
 from shiny import ui, reactive
+from datetime import datetime
 
 import load_data
 from season import Season
@@ -18,6 +19,7 @@ ui.input_select(
     id="selected_season",
     label="",
     choices=load_data.season_labels(),
+    selected=datetime.today().strftime("%B %Y"),
     width="170px",
 )
 

@@ -6,7 +6,7 @@ import pandas as pd
 class Season:
     def __init__(self, date_label: str):
         self.date = datetime.strptime(date_label, "%B %Y").date()
-        date_num = datetime.strftime(self.date, "%Y%m")
+        date_num = self.date.strftime("%Y%m")
         seasons = load_data.seasons()
         selected_season = seasons[seasons["date"] == date_num].melt(
             id_vars=["date"], var_name="field"
