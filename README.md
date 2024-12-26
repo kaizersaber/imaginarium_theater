@@ -33,8 +33,8 @@ Finally, since we already have 5 available Traveler elements and out of the 7 el
 
 The general formula for counting is as follows:
 1. **Count** the number of characters you have with any of the 3 alternate cast elements
-2. **Subtract** the number of characters you have matching the 6 opening characters
-3. **Add** the number of characters you have matching the 4 special invitation characters
+2. **Add** the number of opening characters that you do not have
+3. **Add** the number of characters you have within the 4 special invitation characters
 4. **Add** 1 character for Traveler
 
 The final number of characters you have is then compared against the table below:
