@@ -21,7 +21,7 @@ app_ui = ui.page_fluid(
     ),
     ui.p(),
     ui.panel_title("Alternate Cast Elements"),
-    ui.output_text(id="selected_season_alt_cast_elements"),
+    ui.output_ui(id="selected_season_elements_img"),
     ui.p(),
     ui.panel_title("Opening Characters"),
     ui.output_text(id="selected_season_op_characters"),
@@ -60,10 +60,12 @@ app_ui = ui.page_fluid(
 
 
 def server(input, output, session):
-
-    @render.text
-    def selected_season_alt_cast_elements():
-        return str(selected_season().alt_cast_elements)
+    @render.ui
+    def selected_season_elements_img():
+        elements = load_data.elements()
+        img_paths = [elements[e] for e in selected_season().alt_cast_elements]
+        images = [ui.img(src=p, width="50px") for p in img_paths]
+        return ui.TagList(*images)
 
     @render.text
     def selected_season_op_characters():
