@@ -46,6 +46,7 @@ app_ui = ui.page_fluid(
         label="Type in box to search for character names",
         choices=load_data.character_names(),
         multiple=True,
+        width="100%",
     ),
     ui.help_text("Remember that a character must be level 70+ to be used!"),
     ui.p(),
