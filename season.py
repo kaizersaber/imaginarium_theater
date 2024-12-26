@@ -31,13 +31,13 @@ class Season:
         return len(self.get_elig_characters_in(character_inventory))
 
     def get_elig_characters_in(self, character_inventory: list[str]):
-        character_inventory += [
+        modified_inventory = character_inventory + [
             c for c in self.op_characters if c not in character_inventory
         ]
 
         characters = load_data.characters()
         available_characters = characters[
-            characters["character"].isin(character_inventory)
+            characters["character"].isin(modified_inventory)
         ]
 
         eligible_characters = available_characters[
