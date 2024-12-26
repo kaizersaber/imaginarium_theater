@@ -1,4 +1,4 @@
-from logic.season import Season
+from season import Season
 from datetime import datetime
 
 

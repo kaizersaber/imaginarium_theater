@@ -1,7 +1,8 @@
 from shiny.express import render, input
 from shiny import ui, reactive
-import data.load
-from logic.season import Season
+
+import load_data
+from season import Season
 
 ui.input_dark_mode()
 
@@ -16,7 +17,7 @@ ui.panel_title("Imaginarium Theater")
 ui.input_select(
     id="selected_season",
     label="",
-    choices=data.load.season_labels(),
+    choices=load_data.season_labels(),
     width="170px",
 )
 

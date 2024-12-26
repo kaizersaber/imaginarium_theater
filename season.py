@@ -1,5 +1,5 @@
 from datetime import datetime
-import data.load
+import load_data
 import pandas as pd
 
 
@@ -7,7 +7,7 @@ class Season:
     def __init__(self, date_label: str):
         self.date = datetime.strptime(date_label, "%B %Y").date()
         date_num = datetime.strftime(self.date, "%Y%m")
-        seasons = data.load.seasons()
+        seasons = load_data.seasons()
         selected_season = seasons[seasons["date"] == date_num].melt(
             id_vars=["date"], var_name="field"
         )
@@ -35,7 +35,7 @@ class Season:
             c for c in self.op_characters if c not in character_inventory
         ]
 
-        characters = data.load.characters()
+        characters = load_data.characters()
         available_characters = characters[
             characters["character"].isin(character_inventory)
         ]

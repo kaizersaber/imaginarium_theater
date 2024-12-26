@@ -1,11 +1,14 @@
 import pandas as pd
+from pathlib import Path
 from datetime import datetime
 
-DATA_DIR = "data"
+
+def file_path(path: str):
+    return Path(__file__).parent / path
 
 
 def characters():
-    return pd.read_csv(f"{DATA_DIR}/characters.csv")
+    return pd.read_csv(file_path("characters.csv"))
 
 
 def character_names():
@@ -25,7 +28,7 @@ def elements():
 
 
 def seasons():
-    return pd.read_csv(f"{DATA_DIR}/seasons.csv", dtype=str)
+    return pd.read_csv(file_path("seasons.csv"), dtype=str)
 
 
 def season_labels_and_dates():
