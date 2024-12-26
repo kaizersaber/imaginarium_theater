@@ -16,15 +16,15 @@ def character_names():
 
 
 def elements():
-    WIKI_PATH = "https://static.wikia.nocookie.net/gensin-impact/images"
+    SITE_PATH = "https://static.wikia.nocookie.net/gensin-impact/images"
     return {
-        "Anemo": f"{WIKI_PATH}/1/10/Element_Anemo.svg/",
-        "Cryo": f"{WIKI_PATH}/7/72/Element_Cryo.svg/",
-        "Dendro": f"{WIKI_PATH}/7/73/Element_Dendro.svg",
-        "Electro": f"{WIKI_PATH}/f/ff/Element_Electro.svg",
-        "Geo": f"{WIKI_PATH}/9/9b/Element_Geo.svg",
-        "Hydro": f"{WIKI_PATH}/8/80/Element_Hydro.svg",
-        "Pyro": f"{WIKI_PATH}/2/2c/Element_Pyro.svg",
+        "Anemo": f"{SITE_PATH}/1/10/Element_Anemo.svg/",
+        "Cryo": f"{SITE_PATH}/7/72/Element_Cryo.svg/",
+        "Dendro": f"{SITE_PATH}/7/73/Element_Dendro.svg",
+        "Electro": f"{SITE_PATH}/f/ff/Element_Electro.svg",
+        "Geo": f"{SITE_PATH}/9/9b/Element_Geo.svg",
+        "Hydro": f"{SITE_PATH}/8/80/Element_Hydro.svg",
+        "Pyro": f"{SITE_PATH}/2/2c/Element_Pyro.svg",
     }
 
 
