@@ -16,15 +16,16 @@ def character_names():
 
 
 def elements():
-    return [
-        "Anemo",
-        "Cryo",
-        "Dendro",
-        "Electro",
-        "Geo",
-        "Hydro",
-        "Pyro",
-    ]
+    WIKI_PATH = "https://static.wikia.nocookie.net/gensin-impact/images"
+    return {
+        "Anemo": f"{WIKI_PATH}/1/10/Element_Anemo.svg/",
+        "Cryo": f"{WIKI_PATH}/7/72/Element_Cryo.svg/",
+        "Dendro": f"{WIKI_PATH}/7/73/Element_Dendro.svg",
+        "Electro": f"{WIKI_PATH}/f/ff/Element_Electro.svg",
+        "Geo": f"{WIKI_PATH}/9/9b/Element_Geo.svg",
+        "Hydro": f"{WIKI_PATH}/8/80/Element_Hydro.svg",
+        "Pyro": f"{WIKI_PATH}/2/2c/Element_Pyro.svg",
+    }
 
 
 def seasons():
