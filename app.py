@@ -51,7 +51,10 @@ app_ui = ui.page_fluid(
     ui.p(),
     ui.download_button(id="export_inventory", label="Export to .json"),
     ui.p(),
-    ui.panel_title("Result"),
+    ui.panel_title("Calculator Results"),
+    ui.output_text(id="difficulty_text"),
+    ui.p(),
+    ui.output_text(id="eligible_characters_text"),
 )
 
 
@@ -81,10 +84,43 @@ def server(input, output, session):
         )
     )
     def export_inventory():
+        yield json.dumps(character_inventory()).encode("utf-8")
+
+    @reactive.calc
+    def character_inventory():
         inventory = list(input.character_inventory())
-        if input.include_traveler:
+        if input.include_traveler():
             inventory += ["Traveler"]
-        yield json.dumps(inventory).encode("utf-8")
+        return inventory
+
+    @reactive.effect()
+    def import_inventory():
+        inventory = input.import_inventory()
+        if inventory is not None:
+            with open(inventory[0]["datapath"], "r") as f:
+                inventory = json.load(f)
+            traveler_in_inv = "Traveler" in inventory
+            ui.update_checkbox(id="include_traveler", value=traveler_in_inv)
+            if traveler_in_inv:
+                inventory.remove("Traveler")
+            ui.update_selectize(id="character_inventory", selected=inventory)
+
+    @render.text
+    def difficulty_text():
+        season = selected_season()
+        date = season.date.strftime("%B %Y")
+        count = season.count_elig_characters_in(character_inventory())
+        difficulty = season.highest_difficulty(count)
+        if difficulty == "None":
+            return f"You do not have enough characters to participate in the {date} season."
+        else:
+            return f"The highest difficulty you can challenge for the {date} season is {difficulty}."
+
+    @render.text
+    def eligible_characters_text():
+        characters = selected_season().get_elig_characters_in(character_inventory())
+        count = len(characters)
+        return f"You have {count} eligible characters for this season: {str(sorted(characters))}"
 
 
 app = App(app_ui, server)

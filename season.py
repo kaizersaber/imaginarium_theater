@@ -49,3 +49,17 @@ class Season:
             eligible_characters += ["Traveler"]
 
         return eligible_characters
+
+    def highest_difficulty(self, n_chars: int):
+        if self.date < datetime(2024, 9, 1).date():
+            tier_counts = [10, 14, 18]
+        else:
+            tier_counts = [8, 12, 16, 22]
+
+        tier_names = ["Easy", "Normal", "Hard", "Visionary"][0 : len(tier_counts)]
+        tier_mask = [n_chars >= x for x in tier_counts]
+        valid_tiers = [name for name, include in zip(tier_names, tier_mask) if include]
+        if len(valid_tiers) > 0:
+            return valid_tiers[-1]
+        else:
+            return "None"
