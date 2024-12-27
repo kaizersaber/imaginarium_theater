@@ -32,9 +32,10 @@ app_ui = ui.page_fluid(
     ui.panel_title("My Character Inventory"),
     ui.input_file(
         id="import_inventory",
-        label="You can import a previously exported inventory here",
+        label="You can import a previously exported inventory here:",
         button_label="Import from .json",
         accept=".json",
+        width="500px",
     ),
     ui.input_checkbox(
         id="include_traveler",
