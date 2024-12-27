@@ -49,6 +49,7 @@ app_ui = ui.page_fluid(
     ui.p(),
     ui.row(
         ui.panel_title("My Character Inventory"),
+        ui.help_text("Remember that a character must be level 70+ to be used!"),
         ui.div(
             ui.input_file(
                 id="import_inventory",
@@ -69,7 +70,6 @@ app_ui = ui.page_fluid(
                 width="150px",
             ),
         ),
-        ui.p(),
         ui.input_selectize(
             id="character_inventory",
             label="Type in box to search for character names",
@@ -77,7 +77,6 @@ app_ui = ui.page_fluid(
             multiple=True,
             width="100%",
         ),
-        ui.help_text("Remember that a character must be level 70+ to be used!"),
         ui.div(ui.download_button(id="export_inventory", label="Export to .json")),
         ui.p(),
         ui.panel_title("Calculator Results"),
