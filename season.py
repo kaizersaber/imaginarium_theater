@@ -73,7 +73,7 @@ class Season:
 
         return selected_img_paths
 
-    def highest_difficulty(self, n_chars: int):
+    def highest_tier(self, n_chars: int):
         if self.date < datetime(2024, 9, 1).date():
             tier_counts = [10, 14, 18]
         else:

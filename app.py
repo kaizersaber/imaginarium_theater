@@ -4,7 +4,7 @@ import json
 
 import load_data
 from season import Season
-from ui_elements import imgs_from_paths
+from ui_elements import imgs_from_paths, ui_update_inventory
 
 app_ui = ui.page_fluid(
     ui.head_content(ui.tags.title("Imaginarium Theater")),
@@ -132,22 +132,18 @@ def server(input, output, session):
 
     @reactive.effect()
     def import_inventory():
-        inventory = input.import_inventory()
-        if inventory is not None:
-            with open(inventory[0]["datapath"], "r") as f:
+        file = input.import_inventory()
+        if file is not None:
+            with open(file[0]["datapath"], "r") as f:
                 inventory = json.load(f)
-            traveler_in_inv = "Traveler" in inventory
-            ui.update_checkbox(id="include_traveler", value=traveler_in_inv)
-            if traveler_in_inv:
-                inventory.remove("Traveler")
-            ui.update_selectize(id="character_inventory", selected=inventory)
+            ui_update_inventory(ui, inventory)
 
     @render.text
     def difficulty_text():
         season = selected_season()
         date = season.date.strftime("%B %Y")
         count = season.count_elig_characters_in(character_inventory())
-        difficulty = season.highest_difficulty(count)
+        difficulty = season.highest_tier(count)
         if difficulty == "None":
             return f"You do not have enough characters to participate in the {date} season."
         else:
