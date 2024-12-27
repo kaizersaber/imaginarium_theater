@@ -21,18 +21,18 @@ app_ui = ui.page_fluid(
     ),
     ui.p(),
     ui.panel_title("Alternate Cast Elements"),
-    ui.output_ui(id="selected_season_elements_img"),
+    ui.output_ui(id="selected_season_alt_cast_elements"),
     ui.p(),
     ui.panel_title("Opening Characters"),
-    ui.output_text(id="selected_season_op_characters"),
+    ui.output_ui(id="selected_season_op_characters"),
     ui.p(),
     ui.panel_title("Special Invitations"),
-    ui.output_text(id="selected_season_special_invites"),
+    ui.output_ui(id="selected_season_special_invites"),
     ui.p(),
     ui.panel_title("My Character Inventory"),
     ui.input_file(
         id="import_inventory",
-        label="",
+        label="You can import a previously exported inventory here",
         button_label="Import from .json",
         accept=".json",
     ),
@@ -56,24 +56,31 @@ app_ui = ui.page_fluid(
     ui.output_text(id="difficulty_text"),
     ui.p(),
     ui.output_text(id="eligible_characters_text"),
+    ui.output_ui(id="eligible_characters_imgs"),
 )
 
 
 def server(input, output, session):
     @render.ui
-    def selected_season_elements_img():
-        elements = load_data.elements()
-        img_paths = [elements[e] for e in selected_season().alt_cast_elements]
-        images = [ui.img(src=p, width="50px") for p in img_paths]
-        return ui.TagList(*images)
+    def selected_season_alt_cast_elements():
+        img_paths = load_data.element_img_paths()
+        selected_img_paths = [img_paths[e] for e in selected_season().alt_cast_elements]
+        selected_imgs = [ui.img(src=p, width="50px") for p in selected_img_paths]
+        return ui.TagList(*selected_imgs)
 
-    @render.text
+    @render.ui
     def selected_season_op_characters():
-        return str(selected_season().op_characters)
+        img_paths = load_data.character_img_paths()
+        selected_img_paths = [img_paths[e] for e in selected_season().op_characters]
+        selected_imgs = [ui.img(src=p, width="50px") for p in selected_img_paths]
+        return ui.TagList(*selected_imgs)
 
-    @render.text
+    @render.ui
     def selected_season_special_invites():
-        return str(selected_season().special_invites)
+        img_paths = load_data.character_img_paths()
+        selected_img_paths = [img_paths[e] for e in selected_season().special_invites]
+        selected_imgs = [ui.img(src=p, width="50px") for p in selected_img_paths]
+        return ui.TagList(*selected_imgs)
 
     @reactive.calc
     def selected_season():
@@ -121,9 +128,23 @@ def server(input, output, session):
 
     @render.text
     def eligible_characters_text():
-        characters = selected_season().get_elig_characters_in(character_inventory())
-        count = len(characters)
-        return f"You have {count} eligible characters for this season: {str(sorted(characters))}"
+        count = selected_season().count_elig_characters_in(character_inventory())
+        return f"You have {count} eligible characters for this season:"
+
+    @render.ui
+    def eligible_characters_imgs():
+        img_paths = load_data.character_img_paths()
+        inventory = character_inventory()
+        selected_characters = selected_season().get_elig_characters_in(inventory)
+        selected_img_paths = [
+            img_paths[e] for e in selected_characters if e != "Traveler"
+        ]
+
+        if "Traveler" in inventory:
+            selected_img_paths += [load_data.traveler_img_path("Aether")]
+
+        selected_imgs = [ui.img(src=p, width="50px") for p in selected_img_paths]
+        return ui.TagList(*selected_imgs)
 
 
 app = App(app_ui, server)

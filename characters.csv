@@ -1,94 +1,94 @@
-character,element
-Albedo,Geo
-Alhaitham,Dendro
-Aloy,Cryo
-Amber,Pyro
-Arataki Itto,Geo
-Arlecchino,Pyro
-Baizhu,Dendro
-Barbara,Hydro
-Beidou,Electro
-Bennett,Pyro
-Candace,Hydro
-Charlotte,Cryo
-Chasca,Anemo
-Chevreuse,Pyro
-Chiori,Geo
-Chongyun,Cryo
-Citlali,Cryo
-Clorinde,Electro
-Collei,Dendro
-Cyno,Electro
-Dehya,Pyro
-Diluc,Pyro
-Diona,Cryo
-Dori,Electro
-Emilie,Dendro
-Eula,Cryo
-Faruzan,Anemo
-Fischl,Electro
-Freminet,Cryo
-Furina,Hydro
-Gaming,Pyro
-Ganyu,Cryo
-Gorou,Geo
-Hu Tao,Pyro
-Jean,Anemo
-Kachina,Geo
-Kaedehara Kazuha,Anemo
-Kaeya,Cryo
-Kamisato Ayaka,Cryo
-Kamisato Ayato,Hydro
-Kaveh,Dendro
-Keqing,Electro
-Kinich,Dendro
-Kirara,Dendro
-Klee,Pyro
-Kujou Sara,Electro
-Kuki Shinobu,Electro
-Layla,Cryo
-Lan Yan,Anemo
-Lisa,Electro
-Lynette,Anemo
-Lyney,Pyro
-Mavuika,Pyro
-Mika,Cryo
-Mona,Hydro
-Mualani,Hydro
-Nahida,Dendro
-Navia,Geo
-Neuvillette,Hydro
-Nilou,Hydro
-Ningguang,Geo
-Noelle,Geo
-Ororon,Electro
-Qiqi,Cryo
-Raiden Shogun,Electro
-Razor,Electro
-Rosaria,Cryo
-Sangonomiya Kokomi,Hydro
-Sayu,Anemo
-Sethos,Electro
-Shenhe,Cryo
-Shikanoin Heizou,Anemo
-Sigewinne,Hydro
-Sucrose,Anemo
-Tartaglia,Hydro
-Thoma,Pyro
-Tighnari,Dendro
-Venti,Anemo
-Wanderer,Anemo
-Wriothesley,Cryo
-Xiangling,Pyro
-Xianyun,Anemo
-Xiao,Anemo
-Xilonen,Geo
-Xingqiu,Hydro
-Xinyan,Pyro
-Yae Miko,Electro
-Yanfei,Pyro
-Yaoyao,Dendro
-Yelan,Hydro
-Yoimiya,Pyro
-Yun Jin,Geo
-Zhongli,Geo
+character,element,img_path
+Albedo,Geo,/3/30/Albedo_Icon.png
+Alhaitham,Dendro,/2/2c/Alhaitham_Icon.png
+Aloy,Cryo,/e/e5/Aloy_Icon.png
+Amber,Pyro,/7/75/Amber_Icon.png
+Arataki Itto,Geo,/7/7b/Arataki_Itto_Icon.png
+Arlecchino,Pyro,/9/9a/Arlecchino_Icon.png
+Baizhu,Dendro,/c/cb/Baizhu_Icon.png
+Barbara,Hydro,/6/6a/Barbara_Icon.png
+Beidou,Electro,/e/e1/Beidou_Icon.png
+Bennett,Pyro,/7/79/Bennett_Icon.png
+Candace,Hydro,/d/dd/Candace_Icon.png
+Charlotte,Cryo,/d/d2/Charlotte_Icon.png
+Chasca,Anemo,/0/03/Chasca_Icon.png
+Chevreuse,Pyro,/8/8a/Chevreuse_Icon.png
+Chiori,Geo,/8/88/Chiori_Icon.png
+Chongyun,Cryo,/3/35/Chongyun_Icon.png
+Citlali,Cryo,/d/dd/Citlali_Icon.png
+Clorinde,Electro,/5/5b/Clorinde_Icon.png
+Collei,Dendro,/a/a2/Collei_Icon.png
+Cyno,Electro,/3/31/Cyno_Icon.png
+Dehya,Pyro,/3/3f/Dehya_Icon.png
+Diluc,Pyro,/3/3d/Diluc_Icon.png
+Diona,Cryo,/4/40/Diona_Icon.png
+Dori,Electro,/5/54/Dori_Icon.png
+Emilie,Dendro,/a/aa/Emilie_Icon.png
+Eula,Cryo,/a/af/Eula_Icon.png
+Faruzan,Anemo,/b/b2/Faruzan_Icon.png
+Fischl,Electro,/9/9a/Fischl_Icon.png
+Freminet,Cryo,/e/ee/Freminet_Icon.png
+Furina,Hydro,/e/e6/Furina_Icon.png
+Gaming,Pyro,/7/77/Gaming_Icon.png
+Ganyu,Cryo,/7/79/Ganyu_Icon.png
+Gorou,Geo,/f/fe/Gorou_Icon.png
+Hu Tao,Pyro,/e/e9/Hu_Tao_Icon.png
+Jean,Anemo,/e/e9/Hu_Tao_Icon.png
+Kachina,Geo,/1/1a/Kachina_Icon.png
+Kaedehara Kazuha,Anemo,/e/e3/Kaedehara_Kazuha_Icon.png
+Kaeya,Cryo,/b/b6/Kaeya_Icon.png
+Kamisato Ayaka,Cryo,/5/51/Kamisato_Ayaka_Icon.png
+Kamisato Ayato,Hydro,/2/27/Kamisato_Ayato_Icon.png
+Kaveh,Dendro,/1/1f/Kaveh_Icon.png
+Keqing,Electro,/5/52/Keqing_Icon.png
+Kinich,Dendro,/9/9a/Kinich_Icon.png
+Kirara,Dendro,/b/b6/Kirara_Icon.png
+Klee,Pyro,/9/9c/Klee_Icon.png
+Kujou Sara,Electro,/d/df/Kujou_Sara_Icon.png
+Kuki Shinobu,Electro,/b/b3/Kuki_Shinobu_Icon.png
+Layla,Cryo,/1/1a/Layla_Icon.png
+Lan Yan,Anemo,/e/e6/Lan_Yan_Icon.png
+Lisa,Electro,/6/65/Lisa_Icon.png
+Lynette,Anemo,/a/ad/Lynette_Icon.png
+Lyney,Pyro,/b/b2/Lyney_Icon.png
+Mavuika,Pyro,/d/da/Mavuika_Icon.png
+Mika,Cryo,/d/dd/Mika_Icon.png
+Mona,Hydro,/4/41/Mona_Icon.png
+Mualani,Hydro,/0/0b/Mualani_Icon.png
+Nahida,Dendro,/f/f9/Nahida_Icon.png
+Navia,Geo,/c/c0/Navia_Icon.png
+Neuvillette,Hydro,/2/21/Neuvillette_Icon.png
+Nilou,Hydro,/5/58/Nilou_Icon.png
+Ningguang,Geo,/e/e0/Ningguang_Icon.png
+Noelle,Geo,/8/8e/Noelle_Icon.png
+Ororon,Electro,/5/5e/Ororon_Icon.png
+Qiqi,Cryo,/b/b3/Qiqi_Icon.png
+Raiden Shogun,Electro,/2/24/Raiden_Shogun_Icon.png
+Razor,Electro,/b/b8/Razor_Icon.png
+Rosaria,Cryo,/3/35/Rosaria_Icon.png
+Sangonomiya Kokomi,Hydro,/f/ff/Sangonomiya_Kokomi_Icon.png
+Sayu,Anemo,/2/22/Sayu_Icon.png
+Sethos,Electro,/9/90/Sethos_Icon.png
+Shenhe,Cryo,/a/af/Shenhe_Icon.png
+Shikanoin Heizou,Anemo,/2/20/Shikanoin_Heizou_Icon.png
+Sigewinne,Hydro,/3/37/Sigewinne_Icon.png
+Sucrose,Anemo,/0/0e/Sucrose_Icon.png
+Tartaglia,Hydro,/8/85/Tartaglia_Icon.png
+Thoma,Pyro,/5/5b/Thoma_Icon.png
+Tighnari,Dendro,/8/87/Tighnari_Icon.png
+Venti,Anemo,/f/f1/Venti_Icon.png
+Wanderer,Anemo,/f/f8/Wanderer_Icon.png
+Wriothesley,Cryo,/b/bb/Wriothesley_Icon.png
+Xiangling,Pyro,/3/39/Xiangling_Icon.png
+Xianyun,Anemo,/d/d3/Xianyun_Icon.png
+Xiao,Anemo,/f/fd/Xiao_Icon.png/
+Xilonen,Geo,/a/ab/Xilonen_Icon.png
+Xingqiu,Hydro,/d/d4/Xingqiu_Icon.png
+Xinyan,Pyro,/2/24/Xinyan_Icon.png/
+Yae Miko,Electro,/b/ba/Yae_Miko_Icon.png
+Yanfei,Pyro,/5/54/Yanfei_Icon.png
+Yaoyao,Dendro,/8/83/Yaoyao_Icon.png
+Yelan,Hydro,/d/d3/Yelan_Icon.png
+Yoimiya,Pyro,/8/88/Yoimiya_Icon.png
+Yun Jin,Geo,/9/9c/Yun_Jin_Icon.png
+Zhongli,Geo,/a/a6/Zhongli_Icon.png

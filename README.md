@@ -8,7 +8,6 @@ Each season, the number of eligible characters each player has varies. Thus, it 
 Try it out: [Imaginarium Theater Character Counter](https://kaizersaber.github.io/imaginarium_theater/)!
 
 ## Counting Characters
-
 First, characters must be at least level 70 in order to be eligible. The following steps assume you have already filtered down your character list to those level 70 and above.
 
 Characters are counted in 4 steps:
@@ -51,4 +50,3 @@ The final number of characters you have is then compared against the table below
 For example, a player must have 16 eligible characters to be able to play Hard mode on Imaginarium Theater.
 
 _Note that prior to September 2024, there was no visionary tier, and the difficulty requirements for Easy, Normal, Hard were 10, 14, 18 respectively._
-
