@@ -48,7 +48,7 @@ app_ui = ui.page_fluid(
     ),
     ui.p(),
     ui.row(
-        ui.panel_title("My Character Inventory"),
+        ui.panel_title("Character Inventory"),
         ui.help_text("Remember that a character must be level 70+ to be used!"),
         ui.div(
             ui.input_file(
@@ -79,7 +79,7 @@ app_ui = ui.page_fluid(
         ),
         ui.div(ui.download_button(id="export_inventory", label="Export to .json")),
         ui.p(),
-        ui.panel_title("Calculator Results"),
+        ui.panel_title("Character Requirement Counter"),
         ui.output_text(id="difficulty_text"),
         ui.p(),
         ui.output_text(id="eligible_characters_text"),
