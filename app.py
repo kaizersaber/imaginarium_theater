@@ -7,6 +7,7 @@ from season import Season
 from ui_elements import imgs_from_paths
 
 app_ui = ui.page_fluid(
+    ui.head_content(ui.tags.title("Imaginarium Theater")),
     ui.input_dark_mode(),
     ui.tags.link(
         rel="stylesheet", href="https://fonts.googleapis.com/css2?family=Newsreader"
