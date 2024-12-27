@@ -27,6 +27,18 @@ class Season:
     def _df_field_to_list(df: pd.DataFrame, field_name: str):
         return df[df["field"].str.contains(field_name)]["value"].tolist()
 
+    def get_element_img_paths(self):
+        img_paths = load_data.element_img_paths()
+        return [img_paths[e] for e in self.alt_cast_elements]
+
+    def get_op_character_img_paths(self):
+        img_paths = load_data.character_img_paths()
+        return [img_paths[e] for e in self.op_characters]
+
+    def get_special_invite_img_paths(self):
+        img_paths = load_data.character_img_paths()
+        return [img_paths[e] for e in self.special_invites]
+
     def count_elig_characters_in(self, character_inventory: list[str]):
         return len(self.get_elig_characters_in(character_inventory))
 
@@ -49,6 +61,17 @@ class Season:
             eligible_characters += ["Traveler"]
 
         return eligible_characters
+
+    def get_elig_character_imgs_in(self, inventory: list[str], traveler_name: str):
+        img_paths = load_data.character_img_paths()
+        selected_characters = self.get_elig_characters_in(inventory)
+        selected_img_paths = [
+            img_paths[e] for e in selected_characters if e != "Traveler"
+        ]
+        if "Traveler" in inventory:
+            selected_img_paths += [load_data.traveler_img_path(traveler_name)]
+
+        return selected_img_paths
 
     def highest_difficulty(self, n_chars: int):
         if self.date < datetime(2024, 9, 1).date():

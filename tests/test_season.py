@@ -52,3 +52,35 @@ def test_count_elig_characters():
         "Barbara",
     ]
     assert test_season.count_elig_characters_in(test_character_inventory) == 9
+
+
+def test_highest_difficulty():
+    test_season = Season("September 2024")
+    test_counts = [6, 8, 10, 12, 14, 16, 18, 22]
+    test_result = [test_season.highest_difficulty(n) for n in test_counts]
+    expected_result = [
+        "None",
+        "Easy",
+        "Easy",
+        "Normal",
+        "Normal",
+        "Hard",
+        "Hard",
+        "Visionary",
+    ]
+    assert test_result == expected_result
+
+    test_season = Season("August 2024")
+    test_counts = [6, 8, 10, 12, 14, 16, 18, 22]
+    test_result = [test_season.highest_difficulty(n) for n in test_counts]
+    expected_result = [
+        "None",
+        "None",
+        "Easy",
+        "Easy",
+        "Normal",
+        "Normal",
+        "Hard",
+        "Hard",
+    ]
+    assert test_result == expected_result

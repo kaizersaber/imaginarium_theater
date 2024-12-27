@@ -4,6 +4,7 @@ import json
 
 import load_data
 from season import Season
+from ui_elements import imgs_from_paths
 
 app_ui = ui.page_fluid(
     ui.input_dark_mode(),
@@ -60,6 +61,12 @@ app_ui = ui.page_fluid(
                 label="Include Traveler?",
                 value=True,
             ),
+            ui.input_selectize(
+                id="traveler_name",
+                label="",
+                choices=["Aether", "Lumine"],
+                width="150px",
+            ),
         ),
         ui.p(),
         ui.input_selectize(
@@ -89,24 +96,18 @@ app_ui = ui.page_fluid(
 def server(input, output, session):
     @render.ui
     def selected_season_alt_cast_elements():
-        img_paths = load_data.element_img_paths()
-        selected_img_paths = [img_paths[e] for e in selected_season().alt_cast_elements]
-        selected_imgs = [ui.img(src=p, width="50px") for p in selected_img_paths]
-        return ui.TagList(*selected_imgs)
+        selected_img_paths = selected_season().get_element_img_paths()
+        return imgs_from_paths(selected_img_paths, width="50px")
 
     @render.ui
     def selected_season_op_characters():
-        img_paths = load_data.character_img_paths()
-        selected_img_paths = [img_paths[e] for e in selected_season().op_characters]
-        selected_imgs = [ui.img(src=p, width="50px") for p in selected_img_paths]
-        return ui.TagList(*selected_imgs)
+        selected_img_paths = selected_season().get_op_character_img_paths()
+        return imgs_from_paths(selected_img_paths, width="50px")
 
     @render.ui
     def selected_season_special_invites():
-        img_paths = load_data.character_img_paths()
-        selected_img_paths = [img_paths[e] for e in selected_season().special_invites]
-        selected_imgs = [ui.img(src=p, width="50px") for p in selected_img_paths]
-        return ui.TagList(*selected_imgs)
+        selected_img_paths = selected_season().get_special_invite_img_paths()
+        return imgs_from_paths(selected_img_paths, width="50px")
 
     @reactive.calc
     def selected_season():
@@ -159,18 +160,10 @@ def server(input, output, session):
 
     @render.ui
     def eligible_characters_imgs():
-        img_paths = load_data.character_img_paths()
-        inventory = character_inventory()
-        selected_characters = selected_season().get_elig_characters_in(inventory)
-        selected_img_paths = [
-            img_paths[e] for e in selected_characters if e != "Traveler"
-        ]
-
-        if "Traveler" in inventory:
-            selected_img_paths += [load_data.traveler_img_path("Aether")]
-
-        selected_imgs = [ui.img(src=p, width="50px") for p in selected_img_paths]
-        return ui.TagList(*selected_imgs)
+        selected_img_paths = selected_season().get_elig_character_imgs_in(
+            character_inventory(), input.traveler_name()
+        )
+        return imgs_from_paths(selected_img_paths, width="50px")
 
 
 app = App(app_ui, server)
