@@ -27,24 +27,27 @@ class Season:
     def _df_field_to_list(df: pd.DataFrame, field_name: str):
         return df[df["field"].str.contains(field_name)]["value"].tolist()
 
-    def get_element_img_paths(self):
+    def get_element_imgs(self):
         img_paths = load_data.element_img_paths()
-        return [img_paths[e] for e in self.alt_cast_elements]
+        selected_paths = [img_paths[e] for e in self.alt_cast_elements]
+        return zip(self.alt_cast_elements, selected_paths)
 
-    def get_op_character_img_paths(self):
+    def get_op_character_imgs(self):
         img_paths = load_data.character_img_paths()
-        return [img_paths[e] for e in self.op_characters]
+        selected_paths = [img_paths[c] for c in self.op_characters]
+        return zip(self.op_characters, selected_paths)
 
-    def get_special_invite_img_paths(self):
+    def get_special_invite_imgs(self):
         img_paths = load_data.character_img_paths()
-        return [img_paths[e] for e in self.special_invites]
+        selected_paths = [img_paths[c] for c in self.special_invites]
+        return zip(self.special_invites, selected_paths)
 
     def count_elig_characters_in(self, character_inventory: list[str]):
         return len(self.get_elig_characters_in(character_inventory))
 
-    def get_elig_characters_in(self, character_inventory: list[str]):
-        modified_inventory = character_inventory + [
-            c for c in self.op_characters if c not in character_inventory
+    def get_elig_characters_in(self, inventory: list[str]):
+        modified_inventory = inventory + [
+            c for c in self.op_characters if c not in inventory
         ]
 
         characters = load_data.characters()
@@ -57,7 +60,7 @@ class Season:
             | available_characters["character"].isin(self.special_invites)
         ]["character"].tolist()
 
-        if "Traveler" in character_inventory:
+        if "Traveler" in inventory:
             eligible_characters += ["Traveler"]
 
         return eligible_characters
@@ -65,13 +68,14 @@ class Season:
     def get_elig_character_imgs_in(self, inventory: list[str], traveler_name: str):
         img_paths = load_data.character_img_paths()
         selected_characters = self.get_elig_characters_in(inventory)
-        selected_img_paths = [
-            img_paths[e] for e in selected_characters if e != "Traveler"
-        ]
+        selected_img_names = [c for c in selected_characters if c != "Traveler"]
+        selected_img_paths = [img_paths[n] for n in selected_img_names]
+
         if "Traveler" in inventory:
+            selected_img_names += [traveler_name]
             selected_img_paths += [load_data.traveler_img_path(traveler_name)]
 
-        return selected_img_paths
+        return zip(selected_img_names, selected_img_paths)
 
     def highest_tier(self, n_chars: int):
         if self.date < datetime(2024, 9, 1).date():
@@ -80,7 +84,7 @@ class Season:
             tier_counts = [8, 12, 16, 22]
 
         tier_names = ["Easy", "Normal", "Hard", "Visionary"][0 : len(tier_counts)]
-        tier_mask = [n_chars >= x for x in tier_counts]
+        tier_mask = [n_chars >= i for i in tier_counts]
         valid_tiers = [name for name, include in zip(tier_names, tier_mask) if include]
         if len(valid_tiers) > 0:
             return valid_tiers[-1]

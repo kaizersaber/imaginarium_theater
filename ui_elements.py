@@ -1,8 +1,11 @@
 from shiny import ui
 
 
-def imgs_from_paths(paths: list[str], width):
-    imgs = [ui.img(src=p, width=width) for p in paths]
+def ui_imgs(names_and_paths: tuple[str, str], width):
+    imgs = [
+        ui.tooltip(ui.img(src=p, width=width), n, placement="bottom")
+        for n, p in names_and_paths
+    ]
     return ui.TagList(*imgs)
 
 

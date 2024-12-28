@@ -4,7 +4,7 @@ import json
 
 import load_data
 from season import Season
-from ui_elements import imgs_from_paths, ui_update_inventory
+from ui_elements import ui_imgs, ui_update_inventory
 
 app_ui = ui.page_fluid(
     ui.head_content(ui.tags.title("Imaginarium Theater")),
@@ -13,6 +13,7 @@ app_ui = ui.page_fluid(
         rel="stylesheet", href="https://fonts.googleapis.com/css2?family=Newsreader"
     ),
     ui.tags.style("body { font-family: 'Newsreader'}"),
+    ui.tags.style(".tooltip { background-color: black; font-family: 'Newsreader'}"),
     ui.row(
         ui.panel_title("Imaginarium Theater"),
         ui.div(
@@ -96,18 +97,18 @@ app_ui = ui.page_fluid(
 def server(input, output, session):
     @render.ui
     def selected_season_alt_cast_elements():
-        selected_img_paths = selected_season().get_element_img_paths()
-        return imgs_from_paths(selected_img_paths, width="50px")
+        selected_img_paths = selected_season().get_element_imgs()
+        return ui_imgs(selected_img_paths, width="50px")
 
     @render.ui
     def selected_season_op_characters():
-        selected_img_paths = selected_season().get_op_character_img_paths()
-        return imgs_from_paths(selected_img_paths, width="50px")
+        selected_img_paths = selected_season().get_op_character_imgs()
+        return ui_imgs(selected_img_paths, width="50px")
 
     @render.ui
     def selected_season_special_invites():
-        selected_img_paths = selected_season().get_special_invite_img_paths()
-        return imgs_from_paths(selected_img_paths, width="50px")
+        selected_img_paths = selected_season().get_special_invite_imgs()
+        return ui_imgs(selected_img_paths, width="50px")
 
     @reactive.calc
     def selected_season():
@@ -156,10 +157,10 @@ def server(input, output, session):
 
     @render.ui
     def eligible_characters_imgs():
-        selected_img_paths = selected_season().get_elig_character_imgs_in(
+        selected_imgs = selected_season().get_elig_character_imgs_in(
             character_inventory(), input.traveler_name()
         )
-        return imgs_from_paths(selected_img_paths, width="50px")
+        return ui_imgs(selected_imgs, width="50px")
 
 
 app = App(app_ui, server)
