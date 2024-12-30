@@ -50,12 +50,15 @@ app_ui = ui.page_fluid(
     ui.p(),
     ui.row(
         ui.panel_title("Character Inventory"),
-        ui.help_text("Remember that a character must be level 70+ to be used!"),
+        ui.help_text(
+            "Genshin Open Object Definition (GOOD) format is accepted, "
+            + " note that characters under level 70 are automatically excluded"
+        ),
         ui.div(
             ui.input_file(
                 id="import_inventory",
-                label="You can import a previously exported inventory here:",
-                button_label="Import from .json",
+                label="",
+                button_label="Import characters from .json",
                 accept=".json",
                 width="500px",
             ),
@@ -78,7 +81,12 @@ app_ui = ui.page_fluid(
             multiple=True,
             width="100%",
         ),
-        ui.div(ui.download_button(id="export_inventory", label="Export to .json")),
+        ui.help_text("Exports to a simple array format usable for this page"),
+        ui.div(
+            ui.download_button(
+                id="export_inventory", label="Export characters to .json"
+            )
+        ),
         ui.p(),
         ui.panel_title("Character Requirement Counter"),
         ui.output_text(id="difficulty_text"),
@@ -86,6 +94,9 @@ app_ui = ui.page_fluid(
         ui.output_text(id="eligible_characters_text"),
         ui.div(
             ui.output_ui(id="eligible_characters_imgs"),
+        ),
+        ui.help_text(
+            "Note that the above list will include opening characters that you may not currently have"
         ),
         ui.p(),
         ui.p("Made by xSaberFaye"),

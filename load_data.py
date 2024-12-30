@@ -17,6 +17,10 @@ def character_names():
     return characters()["character"].tolist()
 
 
+def character_keys():
+    return {n.replace(" ", ""): n for n in character_names()}
+
+
 def element_img_paths():
     return {
         "Anemo": f"{SITE_PATH}/1/10/Element_Anemo.svg",
