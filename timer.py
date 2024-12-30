@@ -3,14 +3,15 @@ import time
 
 class DualTimer:
 
-    def __init__(self):
+    def __init__(self, msg):
+        print(msg)
         self.reset()
 
-    def end(self):
+    def end(self, msg):
         self.elapsed_perf = time.perf_counter() - self.start_perf
         self.elapsed_proc = time.process_time() - self.start_proc
         self.elapsed_wait = self.elapsed_perf - self.elapsed_proc
-        print("Season information written to seasons.csv")
+        print(msg)
         print(
             f"Wait time: {self.elapsed_wait:.2f} seconds\n"
             + f"Process time: {self.elapsed_proc:.2f} seconds\n"

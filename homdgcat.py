@@ -10,8 +10,7 @@ HOMDGCAT_WIKI_PATH = "https://homdgcat.wiki/gi/EN"
 
 
 def write_seasons_to_csv():
-    print("Pulling season information from HomDGCat Wiki...")
-    timer = DualTimer()
+    timer = DualTimer(msg="Pulling season information from HomDGCat Wiki...")
     season_list = _homdgcat_seasons()
     dates = [
         datetime.strptime(s["Time"].split(" -")[0], "%Y-%m-%d").date()
@@ -51,7 +50,7 @@ def write_seasons_to_csv():
 
     season_df = season_df.sort_values("date", ascending=False).reset_index(drop=True)
     season_df.to_csv(file_path("seasons.csv"), index=False)
-    timer.end()
+    timer.end(msg="Season information written to seasons.csv")
     return season_df
 
 
