@@ -122,9 +122,6 @@ def _homdgcat_character_ids():
     return {c["_id"]: c["Name"] for c in character_list}
 
 
-def season_labels():
-    return [datetime.strftime(d, "%B %Y") for d in season_dates()]
-
-
-def season_dates():
-    return seasons()["date"].tolist()
+def season_labels(seasons: pd.DataFrame):
+    season_dates = seasons["date"].tolist()
+    return [datetime.strftime(d, "%B %Y") for d in season_dates]
