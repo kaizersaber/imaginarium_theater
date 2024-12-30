@@ -50,3 +50,8 @@ The final number of characters you have is then compared against the table below
 For example, a player must have 16 eligible characters to be able to play Hard mode on Imaginarium Theater.
 
 _Note that prior to September 2024, there was no visionary tier, and the difficulty requirements for Easy, Normal, Hard were 10, 14, 18 respectively._
+
+
+## Credits
+- Imaginarium Theater season information: [HomDGCat Wiki](https://homdgcat.wiki/gi/maze?lang=EN)
+- Element and character images: [Genshin Impact Wiki](https://genshin-impact.fandom.com/wiki/Genshin_Impact_Wiki)

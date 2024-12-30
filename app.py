@@ -123,7 +123,11 @@ def server(input, output, session):
 
     @reactive.calc
     def selected_season():
-        return Season(input.selected_season())
+        return Season(season_data(), input.selected_season())
+
+    @reactive.calc
+    def season_data():
+        return load_data.seasons()
 
     @render.download(
         filename=(

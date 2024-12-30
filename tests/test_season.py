@@ -1,9 +1,12 @@
-from season import Season
 from datetime import datetime
+import load_data
+from season import Season
+
+seasons = load_data.seasons()
 
 
 def test_init():
-    test_season = Season("February 2025")
+    test_season = Season(seasons, "February 2025")
     assert test_season.date == datetime(2025, 2, 1).date()
 
     expected_alt_cast_elements = ["Pyro", "Hydro", "Anemo"]
@@ -19,12 +22,12 @@ def test_init():
     ]
     assert test_season.op_characters == expected_op_characters
 
-    expected_special_invites = ["Keqing", "Ororon", "Citlali", "Yun Jin"]
+    expected_special_invites = ["Clorinde", "Ororon", "Citlali", "Yun Jin"]
     assert test_season.special_invites == expected_special_invites
 
 
 def test_count_elig_characters_in():
-    test_season = Season("January 2025")
+    test_season = Season(seasons, "January 2025")
 
     test_character_inventory = []
     assert test_season.count_elig_characters_in(test_character_inventory) == 6
@@ -53,7 +56,7 @@ def test_count_elig_characters_in():
 def test_highest_tier():
     test_counts = [6, 8, 10, 12, 14, 16, 18, 22]
 
-    test_season = Season("September 2024")
+    test_season = Season(seasons, "September 2024")
     test_result = [test_season.highest_tier(n) for n in test_counts]
     expected_result = [
         "None",
@@ -67,7 +70,7 @@ def test_highest_tier():
     ]
     assert test_result == expected_result
 
-    test_season = Season("August 2024")
+    test_season = Season(seasons, "August 2024")
     test_result = [test_season.highest_tier(n) for n in test_counts]
     expected_result = [
         "None",
