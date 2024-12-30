@@ -20,7 +20,8 @@ app_ui = ui.page_fluid(
             ui.input_selectize(
                 id="selected_season",
                 label="",
-                choices=[datetime.today().strftime("%B %Y")],
+                choices=load_data.season_labels(),
+                selected=datetime.today().strftime("%B %Y"),
                 width="170px",
             )
         ),
@@ -122,17 +123,7 @@ def server(input, output, session):
 
     @reactive.calc
     def selected_season():
-        return Season(season_data(), input.selected_season())
-
-    @reactive.calc
-    def season_data():
-        seasons = load_data.seasons()
-        ui.update_selectize(
-            "selected_season",
-            choices=load_data.season_labels(seasons),
-            selected=datetime.today().strftime("%B %Y"),
-        )
-        return seasons
+        return Season(input.selected_season())
 
     @render.download(
         filename=(

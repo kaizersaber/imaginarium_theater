@@ -4,8 +4,9 @@ import pandas as pd
 
 
 class Season:
-    def __init__(self, seasons: pd.DataFrame, date_label: str):
+    def __init__(self, date_label: str):
         self.date = datetime.strptime(date_label, "%B %Y").date()
+        seasons = load_data.seasons()
         selected_season = seasons[seasons["date"] == self.date].melt(
             id_vars=["date"], var_name="field"
         )
