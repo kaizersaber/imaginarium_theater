@@ -1,13 +1,18 @@
 import requests
 import re
 import ast
+import time
 import pandas as pd
 from datetime import datetime
+from load_data import file_path
 
 HOMDGCAT_WIKI_PATH = "https://homdgcat.wiki/gi/EN"
 
 
-def seasons_to_csv():
+def write_seasons_to_csv():
+    print("Pulling season information from HomDGCat Wiki...")
+    start_time = time.perf_counter()
+    start_time_proc = time.process_time()
     season_list = _homdgcat_seasons()
     dates = [
         datetime.strptime(s["Time"].split(" -")[0], "%Y-%m-%d").date()
@@ -46,7 +51,16 @@ def seasons_to_csv():
         season_df = pd.concat([season_df, season_row], ignore_index=True)
 
     season_df = season_df.sort_values("date", ascending=False).reset_index(drop=True)
-    season_df.to_csv("seasons.csv", index=False)
+    season_df.to_csv(file_path("seasons.csv"), index=False)
+    elapsed_time = time.perf_counter() - start_time
+    elapsed_time_proc = time.process_time() - start_time_proc
+    elapsed_time_req = elapsed_time - elapsed_time_proc
+    print("Season information written to seasons.csv")
+    print(
+        f"Request time: {elapsed_time_req:.2f} seconds\n"
+        + f"Process time: {elapsed_time_proc:.2f} seconds\n"
+        + f"Total time: {elapsed_time:.2f} seconds"
+    )
     return season_df
 
 
