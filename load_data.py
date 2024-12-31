@@ -2,7 +2,7 @@ import pandas as pd
 from pathlib import Path
 from datetime import datetime
 
-GI_WIKI_PATH = "https://static.wikia.nocookie.net/gensin-impact/images"
+GI_WIKI_IMG_PATH = "https://static.wikia.nocookie.net/gensin-impact/images"
 
 
 def file_path(path: str):
@@ -23,28 +23,28 @@ def character_keys():
 
 def element_img_paths():
     return {
-        "Anemo": f"{GI_WIKI_PATH}/1/10/Element_Anemo.svg",
-        "Cryo": f"{GI_WIKI_PATH}/7/72/Element_Cryo.svg",
-        "Dendro": f"{GI_WIKI_PATH}/7/73/Element_Dendro.svg",
-        "Electro": f"{GI_WIKI_PATH}/f/ff/Element_Electro.svg",
-        "Geo": f"{GI_WIKI_PATH}/9/9b/Element_Geo.svg",
-        "Hydro": f"{GI_WIKI_PATH}/8/80/Element_Hydro.svg",
-        "Pyro": f"{GI_WIKI_PATH}/2/2c/Element_Pyro.svg",
+        "Anemo": f"{GI_WIKI_IMG_PATH}/1/10/Element_Anemo.svg",
+        "Cryo": f"{GI_WIKI_IMG_PATH}/7/72/Element_Cryo.svg",
+        "Dendro": f"{GI_WIKI_IMG_PATH}/7/73/Element_Dendro.svg",
+        "Electro": f"{GI_WIKI_IMG_PATH}/f/ff/Element_Electro.svg",
+        "Geo": f"{GI_WIKI_IMG_PATH}/9/9b/Element_Geo.svg",
+        "Hydro": f"{GI_WIKI_IMG_PATH}/8/80/Element_Hydro.svg",
+        "Pyro": f"{GI_WIKI_IMG_PATH}/2/2c/Element_Pyro.svg",
     }
 
 
 def character_img_paths():
     character_df = characters()
     names = character_df["character"].tolist()
-    img_paths = (GI_WIKI_PATH + character_df["img_path"]).tolist()
+    img_paths = (GI_WIKI_IMG_PATH + character_df["img_path"]).tolist()
     return {n: p for n, p in zip(names, img_paths)}
 
 
 def traveler_img_path(player_choice: str):
     if player_choice == "Aether":
-        return f"{GI_WIKI_PATH}/a/a5/Aether_Icon.png"
+        return f"{GI_WIKI_IMG_PATH}/a/a5/Aether_Icon.png"
     elif player_choice == "Lumine":
-        return f"{GI_WIKI_PATH}/9/9c/Lumine_Icon.png"
+        return f"{GI_WIKI_IMG_PATH}/9/9c/Lumine_Icon.png"
 
 
 def season_labels():

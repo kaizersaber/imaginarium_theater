@@ -3,13 +3,17 @@ import re
 import pandas as pd
 from bs4 import BeautifulSoup
 from load_data import file_path, GI_WIKI_IMG_PATH
+from timer import PerfProcTimer
 
 GI_WIKI_URL = "https://genshin-impact.fandom.com/wiki/Characters"
+CSV_NAME = "characters.csv"
 
 
 def write_characters_to_csv():
+    timer = PerfProcTimer("Pulling character information from Genshin Impact Wiki...")
     characters = scrape_character_page()
-    characters.to_csv(file_path("characters.csv"), index=False)
+    characters.to_csv(file_path(CSV_NAME), index=False)
+    timer.end(f"Character information written to {CSV_NAME}")
     return characters
 
 
@@ -19,9 +23,11 @@ def scrape_character_page():
     character_tables = character_page.find_all(
         "table", class_="article-table sortable alternating-colors-table"
     )
-    character_df = pd.concat(
-        [_scrape_character_table(table) for table in character_tables]
-    ).sort_values("character")
+    character_df = (
+        pd.concat([_scrape_character_table(table) for table in character_tables])
+        .sort_values("character")
+        .reset_index(drop=True)
+    )
 
     return _remove_traveler_dainsleif_from(character_df)
 

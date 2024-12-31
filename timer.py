@@ -1,7 +1,7 @@
 import time
 
 
-class DualTimer:
+class PerfProcTimer:
 
     def __init__(self, msg):
         print(msg)
