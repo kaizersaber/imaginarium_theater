@@ -2,56 +2,54 @@ import requests
 import re
 import ast
 import pandas as pd
-from datetime import datetime
+from datetime import datetime, date
 from load_data import file_path
 from timer import PerfProcTimer
 
 HOMDGCAT_WIKI_PATH = "https://homdgcat.wiki/gi/EN"
-CSV_NAME = "seasons.csv"
 
 
-def write_seasons_to_csv():
+def write_seasons_to_csv(file_name: str) -> pd.DataFrame:
     timer = PerfProcTimer("Pulling season information from HomDGCat Wiki...")
     season_df = _scrape_season_data()
-    season_df.to_csv(file_path(CSV_NAME), index=False)
-    timer.end(f"Season information written to {CSV_NAME}")
+    season_df.to_csv(file_path(file_name), index=False)
+    timer.end(f"Season information written to {file_name}")
     return season_df
 
 
-def _scrape_season_data():
-    season_list = _homdgcat_seasons()
-    dates = _scrape_dates_from(season_list)
-    alt_cast_elements = _scrape_elements_from(season_list)
-    op_characters, special_invites = _scrape_characters_from(season_list)
-    season_df = _build_season_df_by_row(
-        dates, alt_cast_elements, op_characters, special_invites
+def _scrape_season_data() -> pd.DataFrame:
+    seasons = _get_seasons()
+    dates = _scrape_dates_from(seasons)
+    alt_cast_elements = _scrape_elements_from(seasons)
+    op_characters, special_invites = _scrape_characters_from(seasons)
+    season_df = _build_season_df(
+        zip(dates, alt_cast_elements, op_characters, special_invites)
     )
     return season_df
 
 
-def _homdgcat_seasons():
+def _get_seasons() -> list:
     response = requests.get(f"{HOMDGCAT_WIKI_PATH}/maze.js")
     str_response = str(response.content.decode("utf-8"))
     pattern = "_overall = (.*?)\n\nvar"
     str_list = re.findall(pattern, str_response, re.DOTALL)[0]
-    season_list = ast.literal_eval(str_list)
-    return season_list
+    seasons = ast.literal_eval(str_list)
+    return seasons
 
 
-def _scrape_dates_from(season_list):
+def _scrape_dates_from(seasons: list) -> list[date]:
     dates = [
-        datetime.strptime(s["Time"].split(" -")[0], "%Y-%m-%d").date()
-        for s in season_list
+        datetime.strptime(s["Time"].split(" -")[0], "%Y-%m-%d").date() for s in seasons
     ]
     return dates
 
 
-def _scrape_elements_from(season_list):
-    element_labels = _homdgcat_element_labels()
-    return [[element_labels[e] for e in s["Elem"]] for s in season_list]
+def _scrape_elements_from(seasons: list) -> list[str]:
+    element_labels = _element_labels()
+    return [[element_labels[e] for e in s["Elem"]] for s in seasons]
 
 
-def _homdgcat_element_labels():
+def _element_labels() -> dict[str, str]:
     element_labels = {
         "Fire": "Pyro",
         "Water": "Hydro",
@@ -64,18 +62,16 @@ def _homdgcat_element_labels():
     return element_labels
 
 
-def _scrape_characters_from(season_list):
-    character_ids = _homdgcat_character_ids()
-    op_characters = [
-        [character_ids[c["ID"]] for c in s["Initial"]] for s in season_list
-    ]
+def _scrape_characters_from(seasons: list) -> tuple[list[str], list[str]]:
+    character_ids = _character_ids()
+    op_characters = [[character_ids[c["ID"]] for c in s["Initial"]] for s in seasons]
     special_invites = [
-        [character_ids[c["ID"]] for c in s["Invitation"]] for s in season_list
+        [character_ids[c["ID"]] for c in s["Invitation"]] for s in seasons
     ]
     return op_characters, special_invites
 
 
-def _homdgcat_character_ids():
+def _character_ids() -> dict[int, str]:
     response = requests.get(f"{HOMDGCAT_WIKI_PATH}/avatar.js")
     str_response = str(response.content.decode("utf-8"))
     pattern = "_AvatarInfoConfig = (.*?)\n\nvar"
@@ -84,29 +80,12 @@ def _homdgcat_character_ids():
     return {c["_id"]: c["Name"] for c in character_list}
 
 
-def _build_season_df_by_row(dates, alt_cast_elements, op_characters, special_invites):
+def _build_season_df(season_data: tuple[list, list, list, list]) -> pd.DataFrame:
     season_df = pd.DataFrame(
+        [[date] + elem + op + spec for date, elem, op, spec in season_data],
         columns=["date"]
         + ["alt_cast_element_" + str(i + 1) for i in range(0, 3)]
         + ["op_character_" + str(i + 1) for i in range(0, 6)]
-        + ["special_invite_" + str(i + 1) for i in range(0, 4)]
+        + ["special_invite_" + str(i + 1) for i in range(0, 4)],
     )
-    for i in range(0, len(dates)):
-        row_dict = {"date": dates[i]}
-        row_dict.update(
-            {
-                "alt_cast_element_" + str(j + 1): alt_cast_elements[i][j]
-                for j in range(0, 3)
-            }
-        )
-        row_dict.update(
-            {"op_character_" + str(j + 1): op_characters[i][j] for j in range(0, 6)}
-        )
-        row_dict.update(
-            {"special_invite_" + str(j + 1): special_invites[i][j] for j in range(0, 4)}
-        )
-        season_row = pd.DataFrame(row_dict, index=[i])
-        season_df = pd.concat([season_df, season_row], ignore_index=True)
-
-    season_df = season_df.sort_values("date", ascending=False).reset_index(drop=True)
-    return season_df
+    return season_df.sort_values("date", ascending=False)

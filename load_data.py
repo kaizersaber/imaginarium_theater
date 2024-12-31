@@ -1,27 +1,27 @@
 import pandas as pd
 from pathlib import Path
-from datetime import datetime
+from datetime import datetime, date
 
 GI_WIKI_IMG_PATH = "https://static.wikia.nocookie.net/gensin-impact/images"
 
 
-def file_path(path: str):
+def file_path(path: str) -> str:
     return Path(__file__).parent / path
 
 
-def characters():
+def characters() -> pd.DataFrame:
     return pd.read_csv(file_path("characters.csv"))
 
 
-def character_names():
+def character_names() -> list[str]:
     return characters()["character"].tolist()
 
 
-def character_keys():
+def character_keys() -> dict:
     return {n.replace(" ", ""): n for n in character_names()}
 
 
-def element_img_paths():
+def element_img_paths() -> dict:
     return {
         "Anemo": f"{GI_WIKI_IMG_PATH}/1/10/Element_Anemo.svg",
         "Cryo": f"{GI_WIKI_IMG_PATH}/7/72/Element_Cryo.svg",
@@ -33,26 +33,26 @@ def element_img_paths():
     }
 
 
-def character_img_paths():
+def character_img_paths() -> dict:
     character_df = characters()
     names = character_df["character"].tolist()
     img_paths = (GI_WIKI_IMG_PATH + character_df["img_path"]).tolist()
     return {n: p for n, p in zip(names, img_paths)}
 
 
-def traveler_img_path(player_choice: str):
+def traveler_img_path(player_choice: str) -> str:
     if player_choice == "Aether":
         return f"{GI_WIKI_IMG_PATH}/a/a5/Aether_Icon.png"
     elif player_choice == "Lumine":
         return f"{GI_WIKI_IMG_PATH}/9/9c/Lumine_Icon.png"
 
 
-def season_labels():
+def season_labels() -> list[str]:
     season_dates = seasons()["date"].tolist()
     return [datetime.strftime(d, "%B %Y") for d in season_dates]
 
 
-def seasons():
+def seasons() -> list[date]:
     seasons = pd.read_csv(file_path("seasons.csv"), dtype=str)
     seasons["date"] = [datetime.strptime(d, "%Y-%m-%d").date() for d in seasons["date"]]
     return seasons

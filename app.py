@@ -107,22 +107,22 @@ app_ui = ui.page_fluid(
 
 def server(input, output, session):
     @render.ui
-    def selected_season_alt_cast_elements():
+    def selected_season_alt_cast_elements() -> ui.TagList:
         selected_img_paths = selected_season().get_element_imgs()
         return ui_imgs(selected_img_paths, width="50px")
 
     @render.ui
-    def selected_season_op_characters():
+    def selected_season_op_characters() -> ui.TagList:
         selected_img_paths = selected_season().get_op_character_imgs()
         return ui_imgs(selected_img_paths, width="50px")
 
     @render.ui
-    def selected_season_special_invites():
+    def selected_season_special_invites() -> ui.TagList:
         selected_img_paths = selected_season().get_special_invite_imgs()
         return ui_imgs(selected_img_paths, width="50px")
 
     @reactive.calc
-    def selected_season():
+    def selected_season() -> Season:
         return Season(input.selected_season())
 
     @render.download(
@@ -136,7 +136,7 @@ def server(input, output, session):
         yield json.dumps(character_inventory()).encode("utf-8")
 
     @reactive.calc
-    def character_inventory():
+    def character_inventory() -> list[str]:
         inventory = list(input.character_inventory())
         if input.include_traveler():
             inventory += ["Traveler"]
@@ -151,7 +151,7 @@ def server(input, output, session):
             ui_update_inventory(ui, inventory)
 
     @render.text
-    def difficulty_text():
+    def difficulty_text() -> str:
         season = selected_season()
         date = season.date.strftime("%B %Y")
         count = season.count_elig_characters_in(character_inventory())
@@ -162,12 +162,12 @@ def server(input, output, session):
             return f"The highest difficulty you can challenge for the {date} season is {difficulty}."
 
     @render.text
-    def eligible_characters_text():
+    def eligible_characters_text() -> str:
         count = selected_season().count_elig_characters_in(character_inventory())
         return f"You have {count} eligible characters for this season:"
 
     @render.ui
-    def eligible_characters_imgs():
+    def eligible_characters_imgs() -> ui.TagList:
         selected_imgs = selected_season().get_elig_character_imgs_in(
             character_inventory(), input.traveler_name()
         )
