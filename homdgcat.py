@@ -11,13 +11,13 @@ HOMDGCAT_WIKI_PATH = "https://homdgcat.wiki/gi/EN"
 
 def write_seasons_to_csv(file_name: str) -> pd.DataFrame:
     timer = PerfProcTimer("Pulling season information from HomDGCat Wiki...")
-    season_df = _scrape_season_data()
+    season_df = scrape_season_data()
     season_df.to_csv(file_path(file_name), index=False)
     timer.end(f"Season information written to {file_name}")
     return season_df
 
 
-def _scrape_season_data() -> pd.DataFrame:
+def scrape_season_data() -> pd.DataFrame:
     seasons = _get_seasons()
     dates = _scrape_dates_from(seasons)
     alt_cast_elements = _scrape_elements_from(seasons)
