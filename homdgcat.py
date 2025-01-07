@@ -18,29 +18,31 @@ def write_seasons_to_csv(file_name: str) -> pd.DataFrame:
 
 
 def scrape_season_data() -> pd.DataFrame:
-    seasons = _get_seasons()
-    dates = _scrape_dates_from(seasons)
-    alt_cast_elements = _scrape_elements_from(seasons)
-    op_characters, special_invites = _scrape_characters_from(seasons)
+    season_dates, season_elem_chars = _get_season_info()
+    dates = _scrape_dates_from(season_dates)
+    alt_cast_elements = _scrape_elements_from(season_elem_chars)
+    op_characters, special_invites = _scrape_characters_from(season_elem_chars)
     season_df = _build_season_df(
         zip(dates, alt_cast_elements, op_characters, special_invites)
     )
     return season_df
 
 
-def _get_seasons() -> list:
+def _get_season_info() -> tuple[list, list]:
     response = requests.get(f"{HOMDGCAT_WIKI_PATH}/maze.js")
     str_response = str(response.content.decode("utf-8"))
-    pattern = "_overall = (.*?)\n\nvar"
-    str_list = re.findall(pattern, str_response, re.DOTALL)[0]
-    seasons = ast.literal_eval(str_list)
-    return seasons
+    season_dates = _find_in(str_response, pattern="_plane = (.*?)\n\nvar")
+    season_elem_chars = _find_in(str_response, pattern="_overall = (.*?)\n\nvar")
+    return season_dates, season_elem_chars
+
+
+def _find_in(response: str, pattern: str) -> list:
+    str_list = re.findall(pattern, response, re.DOTALL)[0]
+    return ast.literal_eval(str_list)
 
 
 def _scrape_dates_from(seasons: list) -> list[date]:
-    dates = [
-        datetime.strptime(s["Time"].split(" -")[0], "%Y-%m-%d").date() for s in seasons
-    ]
+    dates = [datetime.strptime(s["Time"], "%Y/%m").date() for s in seasons]
     return dates
 
 
