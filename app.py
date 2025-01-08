@@ -99,7 +99,32 @@ app_ui = ui.page_fluid(
             "Note that the above list will include opening characters that you may not currently have"
         ),
         ui.p(),
-        ui.p("Made by xSaberFaye"),
+        ui.p(
+            "Made by ",
+            ui.tags.a(
+                "xSaberFaye",
+                href="https://www.youtube.com/@xsaberfaye",
+                target="_blank",
+            ),
+            " - Season information from ",
+            ui.tags.a(
+                "HomDGCat Wiki",
+                href="https://homdgcat.wiki/gi/maze?lang=EN",
+                target="_blank",
+            ),
+            " - Image assets from ",
+            ui.tags.a(
+                "Genshin Impact Wiki",
+                href="https://genshin-impact.fandom.com/wiki/Character/List",
+                target="_blank",
+            ),
+            " - View source code on ",
+            ui.tags.a(
+                "Github",
+                href="https://github.com/kaizersaber/imaginarium_theater",
+                target="_blank",
+            ),
+        ),
         align="center",
     ),
 )
