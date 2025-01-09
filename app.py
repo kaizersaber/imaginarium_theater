@@ -61,17 +61,29 @@ app_ui = ui.page_fluid(
                 button_label="Import characters from .json",
                 accept=".json",
                 width="500px",
+            )
+        ),
+        ui.row(
+            ui.column(
+                2,
+                ui.input_checkbox(
+                    id="include_traveler",
+                    label="Include Traveler?",
+                    value=True,
+                ),
+                offset=4,
+                align="right",
+                style="margin-top:6px",
             ),
-            ui.input_checkbox(
-                id="include_traveler",
-                label="Include Traveler?",
-                value=True,
-            ),
-            ui.input_selectize(
-                id="traveler_name",
-                label="",
-                choices=["Aether", "Lumine"],
-                width="150px",
+            ui.column(
+                2,
+                ui.input_selectize(
+                    id="traveler_name",
+                    label="",
+                    choices=["Aether", "Lumine"],
+                    width="150px",
+                ),
+                align="left",
             ),
         ),
         ui.input_selectize(
