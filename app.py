@@ -65,18 +65,17 @@ app_ui = ui.page_fluid(
         ),
         ui.row(
             ui.column(
-                2,
+                6,
                 ui.input_checkbox(
                     id="include_traveler",
                     label="Include Traveler?",
                     value=True,
                 ),
-                offset=4,
                 align="right",
                 style="margin-top:6px",
             ),
             ui.column(
-                2,
+                6,
                 ui.input_selectize(
                     id="traveler_name",
                     label="",
