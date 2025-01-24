@@ -317,7 +317,7 @@ def server(input, output, session):
         else:
             return ui.TagList()
 
-    def count_if_section_in_breakdown(section: str, breakdown: dict):
+    def count_if_section_in_breakdown(section: str, breakdown: dict) -> int:
         return len(breakdown[section]["characters"]) if section in breakdown else 0
 
 
