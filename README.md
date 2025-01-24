@@ -1,5 +1,5 @@
 # Imaginarium Theater Character Counter
-This app is meant to help free-to-play (F2P) players see if they meet the character count requirements for each tier of the Imaginarium Theater.
+This app is meant to help Genshin Impact players see if they meet the character count requirements for each tier of the Imaginarium Theater.
 
 [What is Imaginarium Theater?](https://genshin-impact.fandom.com/wiki/Imaginarium_Theater)
 
