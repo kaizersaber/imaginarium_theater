@@ -1,5 +1,4 @@
 from datetime import datetime
-import load_data
 from season import Season
 
 
@@ -57,7 +56,7 @@ def test_highest_tier():
     test_season = Season("September 2024")
     test_result = [test_season.highest_tier(n) for n in test_counts]
     expected_result = [
-        "None",
+        None,
         "Easy",
         "Easy",
         "Normal",
@@ -71,13 +70,46 @@ def test_highest_tier():
     test_season = Season("August 2024")
     test_result = [test_season.highest_tier(n) for n in test_counts]
     expected_result = [
-        "None",
-        "None",
+        None,
+        None,
         "Easy",
         "Easy",
         "Normal",
         "Normal",
         "Hard",
         "Hard",
+    ]
+    assert test_result == expected_result
+
+
+def text_next_tier():
+    test_counts = [6, 8, 10, 12, 14, 16, 18, 22]
+
+    test_season = Season("September 2024")
+    test_result = [test_season.next_tier(n) for n in test_counts]
+
+    expected_result = [
+        {"name": "Easy", "increment": 2},
+        {"name": "Normal", "increment": 4},
+        {"name": "Normal", "increment": 2},
+        {"name": "Hard", "increment": 4},
+        {"name": "Hard", "increment": 2},
+        {"name": "Visionary", "increment": 6},
+        {"name": "Visionary", "increment": 4},
+        None,
+    ]
+    assert test_result == expected_result
+
+    test_season = Season("August 2024")
+    test_result = [test_season.next_tier(n) for n in test_counts]
+    expected_result = [
+        {"name": "Easy", "increment": 4},
+        {"name": "Easy", "increment": 2},
+        {"name": "Normal", "increment": 4},
+        {"name": "Normal", "increment": 2},
+        {"name": "Hard", "increment": 4},
+        {"name": "Hard", "increment": 2},
+        None,
+        None,
     ]
     assert test_result == expected_result
