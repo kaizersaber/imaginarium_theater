@@ -195,7 +195,7 @@ def server(input, output, session):
     @render.download(
         filename=(
             "character_inventory_"
-            + datetime.today().date().strftime("%Y_%m_%d")
+            + datetime.today().date().strftime("%Y-%m-%d")
             + ".json"
         )
     )
@@ -239,7 +239,7 @@ def server(input, output, session):
         return text
 
     @reactive.calc
-    def elig_char_breakdown():
+    def elig_char_breakdown() -> dict:
         return selected_season().get_elig_char_breakdown_in(
             character_inventory(), input.traveler_name()
         )

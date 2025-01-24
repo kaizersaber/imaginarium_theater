@@ -32,14 +32,10 @@ class Season:
         return zip(self.alt_cast_elements, selected_paths)
 
     def get_op_character_imgs(self) -> tuple[str, str]:
-        img_paths = load_data.character_img_paths()
-        selected_paths = [img_paths[c] for c in self.op_characters]
-        return zip(self.op_characters, selected_paths)
+        return Season._char_imgs(self.op_characters)
 
     def get_special_invite_imgs(self) -> tuple[str, str]:
-        img_paths = load_data.character_img_paths()
-        selected_paths = [img_paths[c] for c in self.special_invites]
-        return zip(self.special_invites, selected_paths)
+        return Season._char_imgs(self.special_invites)
 
     def count_elig_characters_in(self, inventory: list[str]) -> int:
         breakdown = self.get_elig_char_breakdown_in(inventory)
@@ -47,12 +43,12 @@ class Season:
 
     def get_elig_char_breakdown_in(
         self, inventory: list[str], traveler_name: str = "Aether"
-    ) -> list[list[str]]:
+    ) -> dict:
         breakdown = {}
         self._add_element_sections_to_breakdown(breakdown, inventory)
         self._add_op_and_special_invite_sections_to_breakdown(breakdown, inventory)
         if "Traveler" in inventory:
-            self._add_traveler_section_to_breakdown(breakdown, traveler_name)
+            Season._add_traveler_section_to_breakdown(breakdown, traveler_name)
 
         return breakdown
 
@@ -95,7 +91,7 @@ class Season:
         )
 
     def _add_traveler_section_to_breakdown(
-        self, breakdown: dict, traveler_name: str = "Aether"
+        breakdown: dict, traveler_name: str = "Aether"
     ):
         traveler_section = {
             "traveler": {
