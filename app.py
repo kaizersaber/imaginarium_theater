@@ -226,10 +226,10 @@ def server(input, output, session):
         if current_tier_name is None:
             text = f"You do not have enough characters to participate this season."
         else:
-            text = f"The highest difficulty you can challenge for this season is {current_tier_name}."
+            text = f"The highest difficulty you can challenge this season is {current_tier_name}."
 
         if next_tier is None:
-            text += " You have reached the highest difficulty tier for this season."
+            text += " You have reached the highest difficulty tier this season."
         else:
             increment = next_tier["increment"]
             suffix = "s" if increment > 1 else ""
@@ -247,7 +247,7 @@ def server(input, output, session):
     @render.text
     def eligible_characters_text() -> str:
         count = count_elig_characters_in(elig_char_breakdown())
-        return f"You have {count} eligible characters for this season:"
+        return f"You have {count} eligible characters this season:"
 
     def count_elig_characters_in(breakdown: dict) -> int:
         breakdown = elig_char_breakdown()
