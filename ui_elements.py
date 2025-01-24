@@ -2,16 +2,6 @@ from shiny import ui
 import load_data
 
 
-def ui_imgs_if_section_in_breakdown(
-    section: str, breakdown: dict, width: str = "50px"
-) -> ui.TagList:
-    if section in breakdown:
-        selected_imgs = breakdown["element_1"]["img_names_and_paths"]
-        return ui_imgs(selected_imgs, width="50px")
-    else:
-        return ui.TagList()
-
-
 def ui_imgs(names_and_paths: tuple[str, str], width: str) -> ui.TagList:
     imgs = [
         ui.tooltip(ui.img(src=p, width=width), n, placement="bottom")
