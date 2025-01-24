@@ -254,13 +254,6 @@ def server(input, output, session):
         return sum([len(breakdown[section]["characters"]) for section in breakdown])
 
     @render.ui
-    def eligible_characters_imgs() -> ui.TagList:
-        selected_imgs = selected_season().get_elig_character_imgs_in(
-            character_inventory(), input.traveler_name()
-        )
-        return ui_imgs(selected_imgs, width="50px")
-
-    @render.ui
     def breakdown_elem_imgs_1() -> ui.TagList:
         return imgs_if_section_in_breakdown("element_1", elig_char_breakdown())
 
