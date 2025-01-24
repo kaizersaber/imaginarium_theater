@@ -221,12 +221,12 @@ def server(input, output, session):
     def difficulty_text() -> str:
         season = selected_season()
         count = season.count_elig_characters_in(character_inventory())
-        current_tier_name = season.highest_tier(count)
+        highest_tier = season.highest_tier(count)
         next_tier = season.next_tier(count)
-        if current_tier_name is None:
+        if highest_tier is None:
             text = f"You do not have enough characters to participate this season."
         else:
-            text = f"The highest difficulty you can challenge this season is {current_tier_name}."
+            text = f"The highest difficulty you can challenge this season is {highest_tier}."
 
         if next_tier is None:
             text += " You have reached the highest difficulty tier this season."
