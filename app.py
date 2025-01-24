@@ -313,7 +313,7 @@ def server(input, output, session):
     ) -> ui.TagList:
         if section in breakdown:
             selected_imgs = breakdown[section]["img_names_and_paths"]
-            return ui_imgs(selected_imgs, width="50px")
+            return ui_imgs(selected_imgs, width=width)
         else:
             return ui.TagList()
 
