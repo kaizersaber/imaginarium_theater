@@ -13,7 +13,6 @@ from ui_elements import (
 )
 
 app_ui = ui.page_fluid(
-    ui.head_content(ui.tags.title("Imaginarium Theater")),
     ui.input_dark_mode(),
     ui.tags.link(
         rel="stylesheet", href="https://fonts.googleapis.com/css2?family=Newsreader"
@@ -94,6 +93,7 @@ app_ui = ui.page_fluid(
         ui_credits(),
         align="center",
     ),
+    title="Imaginarium Theater",
 )
 
 
