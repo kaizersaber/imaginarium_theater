@@ -1,5 +1,6 @@
 from shiny import ui, reactive, App, render
 from datetime import datetime
+from faicons import icon_svg
 import json
 
 import load_data
@@ -36,39 +37,66 @@ app_ui = ui.page_fluid(
     ui.p(),
     ui.row(
         ui.panel_title("Character Inventory"),
-        ui.help_text(
-            "Genshin Open Object Definition (GOOD) format is accepted, "
-            + " note that characters under level 70 are automatically excluded"
-        ),
-        ui.div(
-            ui.input_file(
-                id="import_inventory",
-                label="",
-                button_label="Import characters from .json",
-                accept=".json",
-                width="500px",
-            )
-        ),
         ui.row(
             ui.column(
-                6,
-                ui.input_checkbox(
-                    id="include_traveler",
-                    label="Include Traveler?",
-                    value=True,
+                4,
+                ui.div(
+                    ui.tooltip(
+                        ui.input_file(
+                            id="import_inventory",
+                            label="Import Inventory",
+                            button_label=icon_svg("upload"),
+                            accept=".json",
+                            placeholder="Click to upload .json file",
+                        ),
+                        "Genshin Open Object Definition (GOOD) format is accepted, "
+                        + "characters under level 70 are automatically excluded",
+                        placement="bottom",
+                    )
                 ),
-                align="right",
-                style="margin-top:6px",
+                align="center",
             ),
             ui.column(
-                6,
-                ui.input_selectize(
-                    id="traveler_name",
-                    label="",
-                    choices=["Aether", "Lumine"],
-                    width="150px",
+                4,
+                "Customize Traveler",
+                ui.p(),
+                ui.row(
+                    ui.column(
+                        6,
+                        ui.input_checkbox(
+                            id="include_traveler",
+                            label="Include ",
+                            value=True,
+                        ),
+                        align="right",
+                        style="margin-top:6px",
+                    ),
+                    ui.column(
+                        6,
+                        ui.input_selectize(
+                            id="traveler_name",
+                            label="",
+                            choices=["Aether", "Lumine"],
+                            width="100px",
+                        ),
+                        align="left",
+                    ),
                 ),
-                align="left",
+            ),
+            ui.column(
+                4,
+                "Export Inventory",
+                ui.p(),
+                ui.div(
+                    ui.tooltip(
+                        ui.download_button(
+                            id="export_inventory", label=icon_svg("download")
+                        ),
+                        "Exports to a simple array .json usable for this page",
+                        placement="bottom",
+                    )
+                ),
+                align="center",
             ),
         ),
         ui.input_selectize(
@@ -78,16 +106,13 @@ app_ui = ui.page_fluid(
             multiple=True,
             width="100%",
         ),
-        ui.help_text("Exports to a simple array format usable for this page"),
-        ui.div(
-            ui.download_button(
-                id="export_inventory", label="Export characters to .json"
-            )
-        ),
         ui.p(),
         ui.panel_title("Character Requirement Counter"),
-        ui.output_text(id="difficulty_text"),
+        ui.output_text(id="highest_difficulty_text"),
+        ui.output_text(id="next_difficulty_text"),
+        ui.p(),
         ui.output_text(id="eligible_characters_text"),
+        ui.p(),
         ui_breakdown(),
         ui.p(),
         ui_credits(),
@@ -118,11 +143,7 @@ def server(input, output, session):
         return Season(input.selected_season())
 
     @render.download(
-        filename=(
-            "character_inventory_"
-            + datetime.today().date().strftime("%Y-%m-%d")
-            + ".json"
-        )
+        filename=(f"inventory_{datetime.today().strftime("%Y-%m-%d")}.json")
     )
     def export_inventory():
         yield json.dumps(character_inventory()).encode("utf-8")
@@ -143,24 +164,26 @@ def server(input, output, session):
             ui_update_inventory(ui, inventory)
 
     @render.text
-    def difficulty_text() -> str:
-        season = selected_season()
-        count = season.count_elig_characters_in(character_inventory())
-        highest_tier = season.highest_tier(count)
-        next_tier = season.next_tier(count)
+    def highest_difficulty_text() -> str:
+        count = count_elig_characters_in(elig_char_breakdown())
+        highest_tier = selected_season().highest_tier(count)
         if highest_tier is None:
             text = f"You do not have enough characters to participate this season."
         else:
             text = f"The highest difficulty you can challenge this season is {highest_tier}."
+        return text
 
+    @render.text
+    def next_difficulty_text() -> str:
+        count = count_elig_characters_in(elig_char_breakdown())
+        next_tier = selected_season().next_tier(count)
         if next_tier is None:
-            text += " You have reached the highest difficulty tier this season."
+            text = " You have reached the highest difficulty tier this season."
         else:
             increment = next_tier["increment"]
             suffix = "s" if increment > 1 else ""
-            text += f" You need {next_tier["increment"]} more character{suffix} "
+            text = f" You need {next_tier["increment"]} more character{suffix} "
             text += f"to challenge {next_tier["name"]} difficulty."
-
         return text
 
     @reactive.calc
