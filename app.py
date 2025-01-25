@@ -4,7 +4,7 @@ import json
 
 import load_data
 from season import Season
-from ui_elements import ui_breakdown, ui_imgs, ui_update_inventory
+from ui_elements import ui_breakdown, ui_credits, ui_imgs, ui_update_inventory
 
 app_ui = ui.page_fluid(
     ui.head_content(ui.tags.title("Imaginarium Theater")),
@@ -104,32 +104,7 @@ app_ui = ui.page_fluid(
         ui.output_text(id="eligible_characters_text"),
         ui_breakdown(),
         ui.p(),
-        ui.p(
-            "Made by ",
-            ui.tags.a(
-                "xSaberFaye",
-                href="https://www.youtube.com/@xsaberfaye",
-                target="_blank",
-            ),
-            " - Season information from ",
-            ui.tags.a(
-                "HomDGCat Wiki",
-                href="https://homdgcat.wiki/gi/maze?lang=EN",
-                target="_blank",
-            ),
-            " - Image assets from ",
-            ui.tags.a(
-                "Genshin Impact Wiki",
-                href="https://genshin-impact.fandom.com/wiki/Character/List",
-                target="_blank",
-            ),
-            " - View source code on ",
-            ui.tags.a(
-                "Github",
-                href="https://github.com/kaizersaber/imaginarium_theater",
-                target="_blank",
-            ),
-        ),
+        ui_credits(),
         align="center",
     ),
 )

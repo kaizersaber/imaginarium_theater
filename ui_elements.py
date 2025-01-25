@@ -1,4 +1,6 @@
+import pandas as pd
 from shiny import ui
+
 import load_data
 
 
@@ -19,6 +21,40 @@ def ui_breakdown() -> list:
         for text_id, img_id in zip(text_ids, img_ids)
     ]
     return ui.row(*ui_columns)
+
+
+def ui_credits() -> list:
+    text_link_urls = [
+        [
+            "Made by",
+            "xSaberFaye",
+            "https://www.youtube.com/@xsaberfaye",
+        ],
+        [
+            " - Season information from",
+            "HomDGCat Wiki",
+            "https://homdgcat.wiki/gi/maze?lang=EN",
+        ],
+        [
+            " - Image assets from",
+            "Genshin Impact Wiki",
+            "https://genshin-impact.fandom.com/wiki/Character/List",
+        ],
+        [
+            " - View source code on",
+            "Github",
+            "https://github.com/kaizersaber/imaginarium_theater",
+        ],
+    ]
+    credits = [
+        part
+        for text, link, url in text_link_urls
+        for part in [
+            f"{text} ",
+            ui.tags.a(link, href=url, target="_blank"),
+        ]
+    ]
+    return ui.p(*credits)
 
 
 def ui_imgs(names_and_paths: tuple[str, str], width: str) -> ui.TagList:
