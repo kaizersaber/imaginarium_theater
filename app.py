@@ -4,7 +4,7 @@ import json
 
 import load_data
 from season import Season
-from ui_elements import ui_imgs, ui_update_inventory
+from ui_elements import ui_breakdown, ui_imgs, ui_update_inventory
 
 app_ui = ui.page_fluid(
     ui.head_content(ui.tags.title("Imaginarium Theater")),
@@ -102,44 +102,7 @@ app_ui = ui.page_fluid(
         ui.panel_title("Character Requirement Counter"),
         ui.output_text(id="difficulty_text"),
         ui.output_text(id="eligible_characters_text"),
-        ui.row(
-            ui.column(
-                2,
-                ui.output_text(id="breakdown_elem_text_1"),
-                ui.div(ui.output_ui(id="breakdown_elem_imgs_1")),
-                style="padding:0px",
-            ),
-            ui.column(
-                2,
-                ui.output_text(id="breakdown_elem_text_2"),
-                ui.div(ui.output_ui(id="breakdown_elem_imgs_2")),
-                style="padding:0px",
-            ),
-            ui.column(
-                2,
-                ui.output_text(id="breakdown_elem_text_3"),
-                ui.div(ui.output_ui(id="breakdown_elem_imgs_3")),
-                style="padding:0px",
-            ),
-            ui.column(
-                2,
-                ui.output_text(id="breakdown_op_text"),
-                ui.div(ui.output_ui(id="breakdown_op_imgs")),
-                style="padding:0px",
-            ),
-            ui.column(
-                2,
-                ui.output_text(id="breakdown_special_invite_text"),
-                ui.div(ui.output_ui(id="breakdown_special_invite_imgs")),
-                style="padding:0px",
-            ),
-            ui.column(
-                2,
-                ui.output_text(id="breakdown_traveler_text"),
-                ui.div(ui.output_ui(id="breakdown_traveler_img")),
-                style="padding:0px",
-            ),
-        ),
+        ui_breakdown(),
         ui.p(),
         ui.p(
             "Made by ",
@@ -253,32 +216,32 @@ def server(input, output, session):
         breakdown = elig_char_breakdown()
         return sum([len(breakdown[section]["characters"]) for section in breakdown])
 
-    @render.ui
-    def breakdown_elem_imgs_1() -> ui.TagList:
-        return imgs_if_section_in_breakdown("element_1", elig_char_breakdown())
-
     @render.text
-    def breakdown_elem_text_1() -> str:
+    def breakdown_element_1_text() -> str:
         count = count_if_section_in_breakdown("element_1", elig_char_breakdown())
         return f"{count} from {selected_season().alt_cast_elements[0]}"
 
     @render.ui
-    def breakdown_elem_imgs_2() -> ui.TagList:
-        return imgs_if_section_in_breakdown("element_2", elig_char_breakdown())
+    def breakdown_element_1_imgs() -> ui.TagList:
+        return imgs_if_section_in_breakdown("element_1", elig_char_breakdown())
 
     @render.text
-    def breakdown_elem_text_2() -> str:
+    def breakdown_element_2_text() -> str:
         count = count_if_section_in_breakdown("element_2", elig_char_breakdown())
         return f"{count} from {selected_season().alt_cast_elements[1]}"
 
     @render.ui
-    def breakdown_elem_imgs_3() -> ui.TagList:
-        return imgs_if_section_in_breakdown("element_3", elig_char_breakdown())
+    def breakdown_element_2_imgs() -> ui.TagList:
+        return imgs_if_section_in_breakdown("element_2", elig_char_breakdown())
 
     @render.text
-    def breakdown_elem_text_3() -> str:
+    def breakdown_element_3_text() -> str:
         count = count_if_section_in_breakdown("element_3", elig_char_breakdown())
         return f"{count} from {selected_season().alt_cast_elements[2]}"
+
+    @render.ui
+    def breakdown_element_3_imgs() -> ui.TagList:
+        return imgs_if_section_in_breakdown("element_3", elig_char_breakdown())
 
     @render.ui
     def breakdown_op_imgs() -> ui.TagList:
@@ -299,7 +262,7 @@ def server(input, output, session):
         return f"{count} from Special Invitations"
 
     @render.ui
-    def breakdown_traveler_img() -> ui.TagList:
+    def breakdown_traveler_imgs() -> ui.TagList:
         return imgs_if_section_in_breakdown("traveler", elig_char_breakdown())
 
     @render.text

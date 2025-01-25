@@ -2,6 +2,25 @@ from shiny import ui
 import load_data
 
 
+def ui_breakdown() -> list:
+    sections = [f"element_{i}" for i in [1, 2, 3]]
+    sections += ["op", "special_invite", "traveler"]
+
+    text_ids = [f"breakdown_{s}_text" for s in sections]
+    img_ids = [f"breakdown_{s}_imgs" for s in sections]
+
+    ui_columns = [
+        ui.column(
+            2,
+            ui.output_text(id=text_id),
+            ui.div(ui.output_ui(id=img_id)),
+            style="padding:0px",
+        )
+        for text_id, img_id in zip(text_ids, img_ids)
+    ]
+    return ui.row(*ui_columns)
+
+
 def ui_imgs(names_and_paths: tuple[str, str], width: str) -> ui.TagList:
     imgs = [
         ui.tooltip(ui.img(src=p, width=width), n, placement="bottom")
