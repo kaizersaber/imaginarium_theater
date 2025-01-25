@@ -1,16 +1,36 @@
-import pandas as pd
 from shiny import ui
 
 import load_data
 
 
+def ui_season_info() -> list:
+    titles = [
+        "Alternate Cast Elements",
+        "Opening Characters",
+        "Special Invitations",
+    ]
+    ids = [
+        "selected_season_alt_cast_elements",
+        "selected_season_op_characters",
+        "selected_season_special_invites",
+    ]
+    ui_columns = [
+        ui.column(
+            4,
+            ui.panel_title(title),
+            ui.output_ui(id=id),
+            align="center",
+        )
+        for title, id in zip(titles, ids)
+    ]
+    return ui.row(*ui_columns)
+
+
 def ui_breakdown() -> list:
     sections = [f"element_{i}" for i in [1, 2, 3]]
     sections += ["op", "special_invite", "traveler"]
-
     text_ids = [f"breakdown_{s}_text" for s in sections]
     img_ids = [f"breakdown_{s}_imgs" for s in sections]
-
     ui_columns = [
         ui.column(
             2,

@@ -4,7 +4,13 @@ import json
 
 import load_data
 from season import Season
-from ui_elements import ui_breakdown, ui_credits, ui_imgs, ui_update_inventory
+from ui_elements import (
+    ui_season_info,
+    ui_breakdown,
+    ui_credits,
+    ui_imgs,
+    ui_update_inventory,
+)
 
 app_ui = ui.page_fluid(
     ui.head_content(ui.tags.title("Imaginarium Theater")),
@@ -27,26 +33,7 @@ app_ui = ui.page_fluid(
         ),
         align="center",
     ),
-    ui.row(
-        ui.column(
-            4,
-            ui.panel_title("Alternate Cast Elements"),
-            ui.output_ui(id="selected_season_alt_cast_elements"),
-            align="center",
-        ),
-        ui.column(
-            4,
-            ui.panel_title("Opening Characters"),
-            ui.output_ui(id="selected_season_op_characters"),
-            align="center",
-        ),
-        ui.column(
-            4,
-            ui.panel_title("Special Invitations"),
-            ui.output_ui(id="selected_season_special_invites"),
-            align="center",
-        ),
-    ),
+    ui_season_info(),
     ui.p(),
     ui.row(
         ui.panel_title("Character Inventory"),
