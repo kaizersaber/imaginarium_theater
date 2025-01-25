@@ -1,5 +1,4 @@
 from shiny import ui
-
 import load_data
 
 
