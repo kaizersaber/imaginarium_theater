@@ -23,22 +23,22 @@ def test_init():
     assert test_season.special_invites == expected_special_invites
 
 
-def test_count_elig_characters_in():
+def test_get_elig_char_breakdown_in():
     test_season = Season("January 2025")
 
-    test_character_inventory = []
-    assert test_season.count_elig_characters_in(test_character_inventory) == 6
+    test_inventory = []
+    assert test_season.get_elig_char_breakdown_in(test_inventory).n_chars() == 6
 
-    test_character_inventory = test_season.op_characters
-    assert test_season.count_elig_characters_in(test_character_inventory) == 6
+    test_inventory = test_season.op_characters
+    assert test_season.get_elig_char_breakdown_in(test_inventory).n_chars() == 6
 
-    test_character_inventory = ["Traveler"]
-    assert test_season.count_elig_characters_in(test_character_inventory) == 7
+    test_inventory = ["Traveler"]
+    assert test_season.get_elig_char_breakdown_in(test_inventory).n_chars() == 7
 
-    test_character_inventory = test_season.special_invites
-    assert test_season.count_elig_characters_in(test_character_inventory) == 10
+    test_inventory = test_season.special_invites
+    assert test_season.get_elig_char_breakdown_in(test_inventory).n_chars() == 10
 
-    test_character_inventory = [
+    test_inventory = [
         "Xiangling",
         "Jean",
         "Diona",
@@ -47,7 +47,7 @@ def test_count_elig_characters_in():
         "Tighnari",
         "Barbara",
     ]
-    assert test_season.count_elig_characters_in(test_character_inventory) == 9
+    assert test_season.get_elig_char_breakdown_in(test_inventory).n_chars() == 9
 
 
 def test_highest_tier():

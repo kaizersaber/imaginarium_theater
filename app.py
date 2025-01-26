@@ -5,6 +5,7 @@ import json
 
 import load_data
 from season import Season
+from breakdown import Breakdown
 from ui_elements import (
     ui_season_info,
     ui_breakdown,
@@ -165,7 +166,7 @@ def server(input, output, session):
 
     @render.text
     def highest_difficulty_text() -> str:
-        count = count_elig_characters_in(elig_char_breakdown())
+        count = elig_char_breakdown().n_chars()
         highest_tier = selected_season().highest_tier(count)
         if highest_tier is None:
             text = f"You do not have enough characters to participate this season."
@@ -175,7 +176,7 @@ def server(input, output, session):
 
     @render.text
     def next_difficulty_text() -> str:
-        count = count_elig_characters_in(elig_char_breakdown())
+        count = elig_char_breakdown().n_chars()
         next_tier = selected_season().next_tier(count)
         if next_tier is None:
             text = " You have reached the highest difficulty tier this season."
@@ -187,86 +188,70 @@ def server(input, output, session):
         return text
 
     @reactive.calc
-    def elig_char_breakdown() -> dict:
+    def elig_char_breakdown() -> Breakdown:
         return selected_season().get_elig_char_breakdown_in(
             character_inventory(), input.traveler_name()
         )
 
     @render.text
     def eligible_characters_text() -> str:
-        count = count_elig_characters_in(elig_char_breakdown())
+        count = elig_char_breakdown().n_chars()
         return f"You have {count} eligible characters this season:"
-
-    def count_elig_characters_in(breakdown: dict) -> int:
-        breakdown = elig_char_breakdown()
-        return sum([len(breakdown[section]["characters"]) for section in breakdown])
 
     @render.text
     def breakdown_element_1_text() -> str:
-        count = count_if_section_in_breakdown("element_1", elig_char_breakdown())
+        count = elig_char_breakdown().n_chars_in_section("element_1")
         return f"{count} from {selected_season().alt_cast_elements[0]}"
 
     @render.ui
     def breakdown_element_1_imgs() -> ui.TagList:
-        return imgs_if_section_in_breakdown("element_1", elig_char_breakdown())
+        return elig_char_breakdown().ui_imgs_in_section("element_1")
 
     @render.text
     def breakdown_element_2_text() -> str:
-        count = count_if_section_in_breakdown("element_2", elig_char_breakdown())
+        count = elig_char_breakdown().n_chars_in_section("element_2")
         return f"{count} from {selected_season().alt_cast_elements[1]}"
 
     @render.ui
     def breakdown_element_2_imgs() -> ui.TagList:
-        return imgs_if_section_in_breakdown("element_2", elig_char_breakdown())
+        return elig_char_breakdown().ui_imgs_in_section("element_2")
 
     @render.text
     def breakdown_element_3_text() -> str:
-        count = count_if_section_in_breakdown("element_3", elig_char_breakdown())
+        count = elig_char_breakdown().n_chars_in_section("element_3")
         return f"{count} from {selected_season().alt_cast_elements[2]}"
 
     @render.ui
     def breakdown_element_3_imgs() -> ui.TagList:
-        return imgs_if_section_in_breakdown("element_3", elig_char_breakdown())
-
-    @render.ui
-    def breakdown_op_imgs() -> ui.TagList:
-        return imgs_if_section_in_breakdown("op", elig_char_breakdown())
+        return elig_char_breakdown().ui_imgs_in_section("element_3")
 
     @render.text
     def breakdown_op_text() -> str:
-        count = count_if_section_in_breakdown("op", elig_char_breakdown())
+        count = elig_char_breakdown().n_chars_in_section("op")
         return f"{count} from Opening Characters"
 
     @render.ui
-    def breakdown_special_invite_imgs() -> ui.TagList:
-        return imgs_if_section_in_breakdown("special_invites", elig_char_breakdown())
+    def breakdown_op_imgs() -> ui.TagList:
+        return elig_char_breakdown().ui_imgs_in_section("op")
 
     @render.text
     def breakdown_special_invite_text() -> str:
-        count = count_if_section_in_breakdown("special_invites", elig_char_breakdown())
+        count = elig_char_breakdown().n_chars_in_section("special_invites")
         return f"{count} from Special Invitations"
 
     @render.ui
-    def breakdown_traveler_imgs() -> ui.TagList:
-        return imgs_if_section_in_breakdown("traveler", elig_char_breakdown())
+    def breakdown_special_invite_imgs() -> ui.TagList:
+        return elig_char_breakdown().ui_imgs_in_section("special_invites")
 
     @render.text
     def breakdown_traveler_text() -> str:
-        count = count_if_section_in_breakdown("traveler", elig_char_breakdown())
+        count = elig_char_breakdown().n_chars_in_section("traveler")
         cluding = "including" if input.include_traveler() else "excluding"
         return f"{count} from {cluding} {input.traveler_name()}"
 
-    def imgs_if_section_in_breakdown(
-        section: str, breakdown: dict, width: str = "50px"
-    ) -> ui.TagList:
-        if section in breakdown:
-            selected_imgs = breakdown[section]["img_names_and_paths"]
-            return ui_imgs(selected_imgs, width=width)
-        else:
-            return ui.TagList()
-
-    def count_if_section_in_breakdown(section: str, breakdown: dict) -> int:
-        return len(breakdown[section]["characters"]) if section in breakdown else 0
+    @render.ui
+    def breakdown_traveler_imgs() -> ui.TagList:
+        return elig_char_breakdown().ui_imgs_in_section("traveler")
 
 
 app = App(app_ui, server)

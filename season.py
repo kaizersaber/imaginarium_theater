@@ -1,4 +1,5 @@
 from datetime import datetime
+from breakdown import Breakdown
 import load_data
 import pandas as pd
 
@@ -38,21 +39,20 @@ class Season:
         return Season._char_imgs(self.special_invites)
 
     def count_elig_characters_in(self, inventory: list[str]) -> int:
-        breakdown = self.get_elig_char_breakdown_in(inventory)
+        breakdown = self.get_elig_char_breakdown_in(inventory).d
         return sum([len(breakdown[section]["characters"]) for section in breakdown])
 
     def get_elig_char_breakdown_in(
         self, inventory: list[str], traveler_name: str = "Aether"
-    ) -> dict:
-        breakdown = {}
-        self._add_element_sections_to_breakdown(breakdown, inventory)
-        self._add_op_and_special_invite_sections_to_breakdown(breakdown, inventory)
+    ) -> Breakdown:
+        d = {}
+        self._add_element_sections_to_dict(d, inventory)
+        self._add_op_and_special_invite_sections_to_dict(d, inventory)
         if "Traveler" in inventory:
-            Season._add_traveler_section_to_breakdown(breakdown, traveler_name)
+            Season._add_traveler_section_to_dict(d, traveler_name)
+        return Breakdown(d)
 
-        return breakdown
-
-    def _add_element_sections_to_breakdown(self, breakdown: dict, inventory: list[str]):
+    def _add_element_sections_to_dict(self, d: dict, inventory: list[str]):
         characters = load_data.characters()
         chars_from_elements = [
             characters[
@@ -68,10 +68,10 @@ class Season:
             for i, chars in enumerate(chars_from_elements)
             if len(chars) > 0
         }
-        breakdown.update(element_section)
+        d.update(element_section)
 
-    def _add_op_and_special_invite_sections_to_breakdown(
-        self, breakdown: dict, inventory: list[str]
+    def _add_op_and_special_invite_sections_to_dict(
+        self, d: dict, inventory: list[str]
     ):
         chars_from_op = [c for c in self.op_characters if c not in inventory]
         chars_from_special_invite = [c for c in self.special_invites if c in inventory]
@@ -79,7 +79,7 @@ class Season:
             ["op", "special_invites"],
             [chars_from_op, chars_from_special_invite],
         )
-        breakdown.update(
+        d.update(
             {
                 section: {
                     "characters": chars,
@@ -90,16 +90,14 @@ class Season:
             }
         )
 
-    def _add_traveler_section_to_breakdown(
-        breakdown: dict, traveler_name: str = "Aether"
-    ):
+    def _add_traveler_section_to_dict(d: dict, traveler_name: str = "Aether"):
         traveler_section = {
             "traveler": {
                 "characters": ["Traveler"],
                 "img_names_and_paths": Season._char_imgs(["Traveler"], traveler_name),
             }
         }
-        breakdown.update(traveler_section)
+        d.update(traveler_section)
 
     def _char_imgs(characters: list[str], traveler_name: str = "Aether"):
         img_paths = load_data.character_img_paths()
