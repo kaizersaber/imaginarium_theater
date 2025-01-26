@@ -38,10 +38,6 @@ class Season:
     def get_special_invite_imgs(self) -> tuple[str, str]:
         return Season._char_imgs(self.special_invites)
 
-    def count_elig_characters_in(self, inventory: list[str]) -> int:
-        breakdown = self.get_elig_char_breakdown_in(inventory).d
-        return sum([len(breakdown[section]["characters"]) for section in breakdown])
-
     def get_elig_char_breakdown_in(
         self, inventory: list[str], traveler_name: str = "Aether"
     ) -> Breakdown:
