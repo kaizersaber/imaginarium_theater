@@ -127,17 +127,17 @@ def server(input, output, session):
     @render.ui
     def selected_season_alt_cast_elements() -> ui.TagList:
         selected_img_paths = selected_season().get_element_imgs()
-        return ui_imgs(selected_img_paths, width="50px")
+        return ui_imgs(selected_img_paths)
 
     @render.ui
     def selected_season_op_characters() -> ui.TagList:
         selected_img_paths = selected_season().get_op_character_imgs()
-        return ui_imgs(selected_img_paths, width="50px")
+        return ui_imgs(selected_img_paths)
 
     @render.ui
     def selected_season_special_invites() -> ui.TagList:
         selected_img_paths = selected_season().get_special_invite_imgs()
-        return ui_imgs(selected_img_paths, width="50px")
+        return ui_imgs(selected_img_paths)
 
     @reactive.calc
     def selected_season() -> Season:

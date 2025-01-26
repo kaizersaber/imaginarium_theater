@@ -76,7 +76,7 @@ def ui_credits() -> list:
     return ui.p(*credits)
 
 
-def ui_imgs(names_and_paths: tuple[str, str], width: str) -> ui.TagList:
+def ui_imgs(names_and_paths: tuple[str, str], width: str = "50px") -> ui.TagList:
     imgs = [
         ui.tooltip(ui.img(src=p, width=width), n, placement="bottom")
         for n, p in names_and_paths
