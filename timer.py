@@ -3,11 +3,11 @@ import time
 
 class PerfProcTimer:
 
-    def __init__(self, msg):
+    def __init__(self, msg: str):
         print(msg)
         self.reset()
 
-    def end(self, msg):
+    def end(self, msg: str):
         self.elapsed_perf = time.perf_counter() - self.start_perf
         self.elapsed_proc = time.process_time() - self.start_proc
         self.elapsed_wait = self.elapsed_perf - self.elapsed_proc
