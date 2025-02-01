@@ -85,7 +85,7 @@ app_ui = ui.page_fluid(
                 ),
             ),
             ui.column(
-                4,
+                2,
                 "Export Inventory",
                 ui.p(),
                 ui.div(
@@ -94,6 +94,21 @@ app_ui = ui.page_fluid(
                             id="export_inventory", label=icon_svg("download")
                         ),
                         "Exports to a simple array .json usable for this page",
+                        placement="bottom",
+                    )
+                ),
+                align="center",
+            ),
+            ui.column(
+                2,
+                "Clear Inventory",
+                ui.p(),
+                ui.div(
+                    ui.tooltip(
+                        ui.input_action_button(
+                            id="clear_inventory", label=icon_svg("eraser")
+                        ),
+                        "Reset to empty inventory",
                         placement="bottom",
                     )
                 ),
@@ -148,6 +163,11 @@ def server(input, output, session):
     )
     def export_inventory():
         yield json.dumps(character_inventory()).encode("utf-8")
+
+    @reactive.effect
+    def clear_inventory():
+        input.clear_inventory()
+        ui_update_inventory(ui, inventory=[])
 
     @reactive.calc
     def character_inventory() -> list[str]:
