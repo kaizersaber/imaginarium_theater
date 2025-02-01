@@ -108,7 +108,7 @@ app_ui = ui.page_fluid(
                         ui.input_action_button(
                             id="clear_inventory", label=icon_svg("eraser")
                         ),
-                        "Reset to empty inventory",
+                        "Clear characters in box",
                         placement="bottom",
                     )
                 ),
@@ -167,7 +167,7 @@ def server(input, output, session):
     @reactive.effect
     def clear_inventory():
         input.clear_inventory()
-        ui_update_inventory(ui, inventory=[])
+        ui.update_selectize(id="character_inventory", selected=[])
 
     @reactive.calc
     def character_inventory() -> list[str]:
