@@ -8,10 +8,8 @@ def ui_season_info() -> list:
         "Opening Characters",
         "Special Invitations",
     ]
-    ids = [
-        f"selected_season_{s}"
-        for s in ["alt_cast_elements", "op_characters", "special_invites"]
-    ]
+    sections = ["alt_cast_elements", "op_characters", "special_invites"]
+    ids = [f"selected_season_{s}" for s in sections]
     ui_columns = [
         ui.column(
             4,
