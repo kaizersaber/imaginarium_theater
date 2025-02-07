@@ -9,9 +9,8 @@ def ui_season_info() -> list:
         "Special Invitations",
     ]
     ids = [
-        "selected_season_alt_cast_elements",
-        "selected_season_op_characters",
-        "selected_season_special_invites",
+        f"selected_season_{s}"
+        for s in ["alt_cast_elements", "op_characters", "special_invites"]
     ]
     ui_columns = [
         ui.column(
