@@ -2,7 +2,8 @@ import pandas as pd
 from pathlib import Path
 from datetime import datetime, date
 
-GI_WIKI_IMG_PATH = "https://static.wikia.nocookie.net/gensin-impact/images"
+HOMDGCAT_WIKI_IMG_PATH = "https://homdgcat.wiki/homdgcat-res/Avatar/"
+GI_WIKI_IMG_PATH = "https://static.wikia.nocookie.net/gensin-impact/images/"
 
 
 def file_path(path: str) -> str:
@@ -33,18 +34,25 @@ def element_img_paths() -> dict:
     }
 
 
+def character_names() -> dict:
+    character_df = characters()
+    ids = character_df["id"].tolist()
+    names = character_df["character"].tolist()
+    return {i: n for i, n in zip(ids, names)}
+
+
 def character_img_paths() -> dict:
     character_df = characters()
     names = character_df["character"].tolist()
-    img_paths = (GI_WIKI_IMG_PATH + character_df["img_path"]).tolist()
+    img_paths = (HOMDGCAT_WIKI_IMG_PATH + character_df["img_path"]).tolist()
     return {n: p for n, p in zip(names, img_paths)}
 
 
 def traveler_img_path(player_choice: str) -> str:
     if player_choice == "Aether":
-        return f"{GI_WIKI_IMG_PATH}/a/a5/Aether_Icon.png"
+        return f"{HOMDGCAT_WIKI_IMG_PATH}/UI_AvatarIcon_PlayerBoy.png"
     elif player_choice == "Lumine":
-        return f"{GI_WIKI_IMG_PATH}/9/9c/Lumine_Icon.png"
+        return f"{HOMDGCAT_WIKI_IMG_PATH}/UI_AvatarIcon_PlayerGirl.png"
 
 
 def season_labels() -> list[str]:

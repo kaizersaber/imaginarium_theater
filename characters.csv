@@ -1,95 +1,97 @@
-character,element,img_path
-Albedo,Geo,/3/30/Albedo_Icon.png
-Alhaitham,Dendro,/2/2c/Alhaitham_Icon.png
-Aloy,Cryo,/e/e5/Aloy_Icon.png
-Amber,Pyro,/7/75/Amber_Icon.png
-Arataki Itto,Geo,/7/7b/Arataki_Itto_Icon.png
-Arlecchino,Pyro,/9/9a/Arlecchino_Icon.png
-Baizhu,Dendro,/c/cb/Baizhu_Icon.png
-Barbara,Hydro,/6/6a/Barbara_Icon.png
-Beidou,Electro,/e/e1/Beidou_Icon.png
-Bennett,Pyro,/7/79/Bennett_Icon.png
-Candace,Hydro,/d/dd/Candace_Icon.png
-Charlotte,Cryo,/d/d2/Charlotte_Icon.png
-Chasca,Anemo,/0/03/Chasca_Icon.png
-Chevreuse,Pyro,/8/8a/Chevreuse_Icon.png
-Chiori,Geo,/8/88/Chiori_Icon.png
-Chongyun,Cryo,/3/35/Chongyun_Icon.png
-Citlali,Cryo,/d/dd/Citlali_Icon.png
-Clorinde,Electro,/5/5b/Clorinde_Icon.png
-Collei,Dendro,/a/a2/Collei_Icon.png
-Cyno,Electro,/3/31/Cyno_Icon.png
-Dehya,Pyro,/3/3f/Dehya_Icon.png
-Diluc,Pyro,/3/3d/Diluc_Icon.png
-Diona,Cryo,/4/40/Diona_Icon.png
-Dori,Electro,/5/54/Dori_Icon.png
-Emilie,Dendro,/a/aa/Emilie_Icon.png
-Eula,Cryo,/a/af/Eula_Icon.png
-Faruzan,Anemo,/b/b2/Faruzan_Icon.png
-Fischl,Electro,/9/9a/Fischl_Icon.png
-Freminet,Cryo,/e/ee/Freminet_Icon.png
-Furina,Hydro,/e/e6/Furina_Icon.png
-Gaming,Pyro,/7/77/Gaming_Icon.png
-Ganyu,Cryo,/7/79/Ganyu_Icon.png
-Gorou,Geo,/f/fe/Gorou_Icon.png
-Hu Tao,Pyro,/e/e9/Hu_Tao_Icon.png
-Jean,Anemo,/6/64/Jean_Icon.png
-Kachina,Geo,/1/1a/Kachina_Icon.png
-Kaedehara Kazuha,Anemo,/e/e3/Kaedehara_Kazuha_Icon.png
-Kaeya,Cryo,/b/b6/Kaeya_Icon.png
-Kamisato Ayaka,Cryo,/5/51/Kamisato_Ayaka_Icon.png
-Kamisato Ayato,Hydro,/2/27/Kamisato_Ayato_Icon.png
-Kaveh,Dendro,/1/1f/Kaveh_Icon.png
-Keqing,Electro,/5/52/Keqing_Icon.png
-Kinich,Dendro,/9/9a/Kinich_Icon.png
-Kirara,Dendro,/b/b6/Kirara_Icon.png
-Klee,Pyro,/9/9c/Klee_Icon.png
-Kujou Sara,Electro,/d/df/Kujou_Sara_Icon.png
-Kuki Shinobu,Electro,/b/b3/Kuki_Shinobu_Icon.png
-Lan Yan,Anemo,/e/e6/Lan_Yan_Icon.png
-Layla,Cryo,/1/1a/Layla_Icon.png
-Lisa,Electro,/6/65/Lisa_Icon.png
-Lynette,Anemo,/a/ad/Lynette_Icon.png
-Lyney,Pyro,/b/b2/Lyney_Icon.png
-Mavuika,Pyro,/d/da/Mavuika_Icon.png
-Mika,Cryo,/d/dd/Mika_Icon.png
-Mona,Hydro,/4/41/Mona_Icon.png
-Mualani,Hydro,/0/0b/Mualani_Icon.png
-Nahida,Dendro,/f/f9/Nahida_Icon.png
-Navia,Geo,/c/c0/Navia_Icon.png
-Neuvillette,Hydro,/2/21/Neuvillette_Icon.png
-Nilou,Hydro,/5/58/Nilou_Icon.png
-Ningguang,Geo,/e/e0/Ningguang_Icon.png
-Noelle,Geo,/8/8e/Noelle_Icon.png
-Ororon,Electro,/5/5e/Ororon_Icon.png
-Qiqi,Cryo,/b/b3/Qiqi_Icon.png
-Raiden Shogun,Electro,/2/24/Raiden_Shogun_Icon.png
-Razor,Electro,/b/b8/Razor_Icon.png
-Rosaria,Cryo,/3/35/Rosaria_Icon.png
-Sangonomiya Kokomi,Hydro,/f/ff/Sangonomiya_Kokomi_Icon.png
-Sayu,Anemo,/2/22/Sayu_Icon.png
-Sethos,Electro,/9/90/Sethos_Icon.png
-Shenhe,Cryo,/a/af/Shenhe_Icon.png
-Shikanoin Heizou,Anemo,/2/20/Shikanoin_Heizou_Icon.png
-Sigewinne,Hydro,/3/37/Sigewinne_Icon.png
-Sucrose,Anemo,/0/0e/Sucrose_Icon.png
-Tartaglia,Hydro,/8/85/Tartaglia_Icon.png
-Thoma,Pyro,/5/5b/Thoma_Icon.png
-Tighnari,Dendro,/8/87/Tighnari_Icon.png
-Venti,Anemo,/f/f1/Venti_Icon.png
-Wanderer,Anemo,/f/f8/Wanderer_Icon.png
-Wriothesley,Cryo,/b/bb/Wriothesley_Icon.png
-Xiangling,Pyro,/3/39/Xiangling_Icon.png
-Xianyun,Anemo,/d/d3/Xianyun_Icon.png
-Xiao,Anemo,/f/fd/Xiao_Icon.png
-Xilonen,Geo,/a/ab/Xilonen_Icon.png
-Xingqiu,Hydro,/d/d4/Xingqiu_Icon.png
-Xinyan,Pyro,/2/24/Xinyan_Icon.png
-Yae Miko,Electro,/b/ba/Yae_Miko_Icon.png
-Yanfei,Pyro,/5/54/Yanfei_Icon.png
-Yaoyao,Dendro,/8/83/Yaoyao_Icon.png
-Yelan,Hydro,/d/d3/Yelan_Icon.png
-Yoimiya,Pyro,/8/88/Yoimiya_Icon.png
-Yumemizuki Mizuki,Anemo,/f/f6/Yumemizuki_Mizuki_Icon.png
-Yun Jin,Geo,/9/9c/Yun_Jin_Icon.png
-Zhongli,Geo,/a/a6/Zhongli_Icon.png
+character,id,element,img_path
+Albedo,38,Geo,UI_AvatarIcon_Albedo.png
+Alhaitham,78,Dendro,UI_AvatarIcon_Alhatham.png
+Aloy,62,Cryo,UI_AvatarIcon_Aloy.png
+Amber,21,Pyro,UI_AvatarIcon_Ambor.png
+Arataki Itto,57,Geo,UI_AvatarIcon_Itto.png
+Arlecchino,96,Pyro,UI_AvatarIcon_Arlecchino.png
+Baizhu,82,Dendro,UI_AvatarIcon_Baizhuer.png
+Barbara,14,Hydro,UI_AvatarIcon_Barbara.png
+Beidou,24,Electro,UI_AvatarIcon_Beidou.png
+Bennett,32,Pyro,UI_AvatarIcon_Bennett.png
+Candace,72,Hydro,UI_AvatarIcon_Candace.png
+Charlotte,88,Cryo,UI_AvatarIcon_Charlotte.png
+Chasca,104,Anemo,UI_AvatarIcon_Chasca.png
+Chevreuse,90,Pyro,UI_AvatarIcon_Chevreuse.png
+Chiori,94,Geo,UI_AvatarIcon_Chiori.png
+Chongyun,36,Cryo,UI_AvatarIcon_Chongyun.png
+Citlali,107,Cryo,UI_AvatarIcon_Citlali.png
+Clorinde,98,Electro,UI_AvatarIcon_Clorinde.png
+Collei,67,Dendro,UI_AvatarIcon_Collei.png
+Cyno,71,Electro,UI_AvatarIcon_Cyno.png
+Dehya,79,Pyro,UI_AvatarIcon_Dehya.png
+Diluc,16,Pyro,UI_AvatarIcon_Diluc.png
+Diona,39,Cryo,UI_AvatarIcon_Diona.png
+Dori,68,Electro,UI_AvatarIcon_Dori.png
+Emilie,99,Dendro,UI_AvatarIcon_Emilie.png
+Eula,51,Cryo,UI_AvatarIcon_Eula.png
+Faruzan,76,Anemo,UI_AvatarIcon_Faruzan.png
+Fischl,31,Electro,UI_AvatarIcon_Fischl.png
+Freminet,85,Cryo,UI_AvatarIcon_Freminet.png
+Furina,89,Hydro,UI_AvatarIcon_Furina.png
+Gaming,92,Pyro,UI_AvatarIcon_Gaming.png
+Ganyu,37,Cryo,UI_AvatarIcon_Ganyu.png
+Gorou,55,Geo,UI_AvatarIcon_Gorou.png
+Hu Tao,46,Pyro,UI_AvatarIcon_Hutao.png
+Iansan,110,Electro,UI_AvatarIcon_Iansan.png
+Jean,3,Anemo,UI_AvatarIcon_Qin.png
+Kachina,100,Geo,UI_AvatarIcon_Kachina.png
+Kaedehara Kazuha,47,Anemo,UI_AvatarIcon_Kazuha.png
+Kaeya,15,Cryo,UI_AvatarIcon_Kaeya.png
+Kamisato Ayaka,2,Cryo,UI_AvatarIcon_Ayaka.png
+Kamisato Ayato,66,Hydro,UI_AvatarIcon_Ayato.png
+Kaveh,81,Dendro,UI_AvatarIcon_Kaveh.png
+Keqing,42,Electro,UI_AvatarIcon_Keqing.png
+Kinich,101,Dendro,UI_AvatarIcon_Kinich.png
+Kirara,61,Dendro,UI_AvatarIcon_Momoka.png
+Klee,29,Pyro,UI_AvatarIcon_Klee.png
+Kujou Sara,56,Electro,UI_AvatarIcon_Sara.png
+Kuki Shinobu,65,Electro,UI_AvatarIcon_Shinobu.png
+Lan Yan,108,Anemo,UI_AvatarIcon_Lanyan.png
+Layla,74,Cryo,UI_AvatarIcon_Layla.png
+Lisa,6,Electro,UI_AvatarIcon_Lisa.png
+Lynette,83,Anemo,UI_AvatarIcon_Linette.png
+Lyney,84,Pyro,UI_AvatarIcon_Liney.png
+Mavuika,106,Pyro,UI_AvatarIcon_Mavuika.png
+Mika,80,Cryo,UI_AvatarIcon_Mika.png
+Mona,41,Hydro,UI_AvatarIcon_Mona.png
+Mualani,102,Hydro,UI_AvatarIcon_Mualani.png
+Nahida,73,Dendro,UI_AvatarIcon_Nahida.png
+Navia,91,Geo,UI_AvatarIcon_Navia.png
+Neuvillette,87,Hydro,UI_AvatarIcon_Neuvillette.png
+Nilou,70,Hydro,UI_AvatarIcon_Nilou.png
+Ningguang,27,Geo,UI_AvatarIcon_Ningguang.png
+Noelle,34,Geo,UI_AvatarIcon_Noel.png
+Ororon,105,Electro,UI_AvatarIcon_Olorun.png
+Qiqi,35,Cryo,UI_AvatarIcon_Qiqi.png
+Raiden Shogun,52,Electro,UI_AvatarIcon_Shougun.png
+Razor,20,Electro,UI_AvatarIcon_Razor.png
+Rosaria,45,Cryo,UI_AvatarIcon_Rosaria.png
+Sangonomiya Kokomi,54,Hydro,UI_AvatarIcon_Kokomi.png
+Sayu,53,Anemo,UI_AvatarIcon_Sayu.png
+Sethos,97,Electro,UI_AvatarIcon_Sethos.png
+Shenhe,63,Cryo,UI_AvatarIcon_Shenhe.png
+Shikanoin Heizou,59,Anemo,UI_AvatarIcon_Heizo.png
+Sigewinne,95,Hydro,UI_AvatarIcon_Sigewinne.png
+Sucrose,43,Anemo,UI_AvatarIcon_Sucrose.png
+Tartaglia,33,Hydro,UI_AvatarIcon_Tartaglia.png
+Thoma,50,Pyro,UI_AvatarIcon_Tohma.png
+Tighnari,69,Dendro,UI_AvatarIcon_Tighnari.png
+Varesa,111,Electro,UI_AvatarIcon_Varesa.png
+Venti,22,Anemo,UI_AvatarIcon_Venti.png
+Wanderer,75,Anemo,UI_AvatarIcon_Wanderer.png
+Wriothesley,86,Cryo,UI_AvatarIcon_Wriothesley.png
+Xiangling,23,Pyro,UI_AvatarIcon_Xiangling.png
+Xianyun,93,Anemo,UI_AvatarIcon_Liuyun.png
+Xiao,26,Anemo,UI_AvatarIcon_Xiao.png
+Xilonen,103,Geo,UI_AvatarIcon_Xilonen.png
+Xingqiu,25,Hydro,UI_AvatarIcon_Xingqiu.png
+Xinyan,44,Pyro,UI_AvatarIcon_Xinyan.png
+Yae Miko,58,Electro,UI_AvatarIcon_Yae.png
+Yanfei,48,Pyro,UI_AvatarIcon_Feiyan.png
+Yaoyao,77,Dendro,UI_AvatarIcon_Yaoyao.png
+Yelan,60,Hydro,UI_AvatarIcon_Yelan.png
+Yoimiya,49,Pyro,UI_AvatarIcon_Yoimiya.png
+Yumemizuki Mizuki,109,Anemo,UI_AvatarIcon_Mizuki.png
+Yun Jin,64,Geo,UI_AvatarIcon_Yunjin.png
+Zhongli,30,Geo,UI_AvatarIcon_Zhongli.png

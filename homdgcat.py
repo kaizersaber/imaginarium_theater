@@ -3,18 +3,53 @@ import re
 import ast
 import pandas as pd
 from datetime import datetime, date
-from load_data import file_path
+from load_data import file_path, character_names
 from timer import PerfProcTimer
 
 HOMDGCAT_WIKI_PATH = "https://homdgcat.wiki/gi/EN"
 
+CHARACTER_FILE = "characters.csv"
+SEASON_FILE = "seasons.csv"
 
-def write_seasons_to_csv(file_name: str) -> pd.DataFrame:
+
+def write_to_csvs():
     timer = PerfProcTimer("Pulling season information from HomDGCat Wiki...")
+    character_df = scrape_character_data()
+    character_df.to_csv(file_path(CHARACTER_FILE), index=False)
     season_df = scrape_season_data()
-    season_df.to_csv(file_path(file_name), index=False)
-    timer.end(f"Season information written to {file_name}")
-    return season_df
+    season_df.to_csv(file_path(SEASON_FILE), index=False)
+    timer.end(f"Updated {CHARACTER_FILE} and {SEASON_FILE}")
+
+
+def scrape_character_data() -> pd.DataFrame:
+    response = requests.get(f"{HOMDGCAT_WIKI_PATH}/avatar.js")
+    str_response = str(response.content.decode("utf-8"))
+    pattern = "_AvatarInfoConfig = (.*?)\n\nvar"
+    str_list = re.findall(pattern, str_response, re.DOTALL)[0]
+    character_list = ast.literal_eval(str_list)
+    elem_label = _element_label()
+    df = pd.DataFrame(
+        columns=["character", "id", "element", "img_path"],
+        data=[
+            (c["Name"], c["_id"], elem_label[c["Element"]], f"{c["Icon"]}.png")
+            for c in character_list
+        ],
+    )
+    df = df[df["character"] != "Traveler"].sort_values("character")
+    return df
+
+
+def _element_label() -> dict[str]:
+    elements = {
+        "Elec": "Electro",
+        "Wind": "Anemo",
+        "Ice": "Cryo",
+        "Fire": "Pyro",
+        "Rock": "Geo",
+        "Water": "Hydro",
+        "Grass": "Dendro",
+    }
+    return elements
 
 
 def scrape_season_data() -> pd.DataFrame:
@@ -47,11 +82,11 @@ def _scrape_dates_from(seasons: list) -> list[date]:
 
 
 def _scrape_elements_from(seasons: list) -> list[str]:
-    element_labels = _element_labels()
+    element_labels = _element_label()
     return [[element_labels[e] for e in s["Elem"]] for s in seasons]
 
 
-def _element_labels() -> dict[str, str]:
+def _element_label() -> dict[str, str]:
     element_labels = {
         "Fire": "Pyro",
         "Water": "Hydro",
@@ -65,21 +100,10 @@ def _element_labels() -> dict[str, str]:
 
 
 def _scrape_characters_from(seasons: list) -> tuple[list[str], list[str]]:
-    character_ids = _character_ids()
-    op_characters = [[character_ids[c["ID"]] for c in s["Initial"]] for s in seasons]
-    special_invites = [
-        [character_ids[c["ID"]] for c in s["Invitation"]] for s in seasons
-    ]
+    name = character_names()
+    op_characters = [[name[c["ID"]] for c in s["Initial"]] for s in seasons]
+    special_invites = [[name[c["ID"]] for c in s["Invitation"]] for s in seasons]
     return op_characters, special_invites
-
-
-def _character_ids() -> dict[int, str]:
-    response = requests.get(f"{HOMDGCAT_WIKI_PATH}/avatar.js")
-    str_response = str(response.content.decode("utf-8"))
-    pattern = "_AvatarInfoConfig = (.*?)\n\nvar"
-    str_list = re.findall(pattern, str_response, re.DOTALL)[0]
-    character_list = ast.literal_eval(str_list)
-    return {c["_id"]: c["Name"] for c in character_list}
 
 
 def _build_season_df(season_data: tuple[list, list, list, list]) -> pd.DataFrame:
