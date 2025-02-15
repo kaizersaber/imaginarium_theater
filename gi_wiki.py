@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup, element
 from load_data import file_path, GI_WIKI_IMG_PATH
 from timer import PerfProcTimer
 
-GI_WIKI_URL = "https://genshin-impact.fandom.com/wiki/Characters"
+GI_WIKI_URL = "https://genshin-impact.fandom.com/wiki/Character"
 
 
 def write_characters_to_csv(file_name: str) -> pd.DataFrame:
@@ -19,9 +19,7 @@ def write_characters_to_csv(file_name: str) -> pd.DataFrame:
 def scrape_character_page() -> pd.DataFrame:
     response = requests.get(GI_WIKI_URL)
     character_page = BeautifulSoup(response.text, "html.parser")
-    character_tables = character_page.find_all(
-        "table", class_="article-table sortable alternating-colors-table"
-    )
+    character_tables = character_page.find_all("table", class_="fandom-table")
     character_df = (
         pd.concat([_scrape_character_table(table) for table in character_tables])
         .sort_values("character")
