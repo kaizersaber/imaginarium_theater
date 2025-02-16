@@ -47,14 +47,9 @@ def ui_credits() -> list:
             "https://www.youtube.com/@xsaberfaye",
         ],
         [
-            " - Season information from",
+            " - Data and assets from",
             "HomDGCat Wiki",
             "https://homdgcat.wiki/gi/maze?lang=EN",
-        ],
-        [
-            " - Image assets from",
-            "Genshin Impact Wiki",
-            "https://genshin-impact.fandom.com/wiki/Character/List",
         ],
         [
             " - View source code on",
