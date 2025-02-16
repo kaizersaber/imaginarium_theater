@@ -17,7 +17,7 @@ Characters are counted in 4 steps:
 - Traveler
 
 ### Alternate Cast Elements
-Each season, there are 3 alternate cast elements. Characters of these elements can generally be used in the season. Since the 3 elements rotate every season, it is generally a good idea to ensure that you don't have too few characters in a particular element.
+Each season, there are 3 alternate cast elements. Characters of these elements can generally be used in the season. Since the 3 elements rotate every season, it is usually a good idea to ensure that you don't have too few characters of a particular element.
 
 ### Opening Characters
 Next, there will be 6 opening characters. These characters are guaranteed to have elements within the alternate cast elements mentioned above. In addition, they are available for everyone to use, **even if a player doesn't have them**.
@@ -28,7 +28,7 @@ Thus, it is better for a player _**not**_ to have the opening characters as the 
 Next, there will be 4 special invitation characters. These characters are guaranteed to have elements _**outside of**_ the alternate cast elements mentioned above. However, they can be used **only if a player has them**.
 
 ### Traveler
-Finally, since we already have 5 available Traveler elements and out of the 7 elements, 3 must be selected each season, Traveler is **always** usable as an additional character.
+Finally, since we already have at least 5 available Traveler elements and out of the 7 elements, 3 must be selected each season, Traveler is **always** usable as an additional character.
 
 ### Putting it all together
 
