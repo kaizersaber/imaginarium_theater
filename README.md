@@ -53,5 +53,4 @@ _Note that prior to September 2024, there was no visionary tier, and the difficu
 
 
 ## Credits
-- Imaginarium Theater season information: [HomDGCat Wiki](https://homdgcat.wiki/gi/maze?lang=EN)
-- Element and character images: [Genshin Impact Wiki](https://genshin-impact.fandom.com/wiki/Genshin_Impact_Wiki)
+- Season data and image assets: [HomDGCat Wiki](https://homdgcat.wiki/gi/maze?lang=EN)
