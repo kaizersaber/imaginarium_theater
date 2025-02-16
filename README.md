@@ -53,4 +53,4 @@ _Note that prior to September 2024, there was no visionary tier, and the difficu
 
 
 ## Credits
-- Season data and image assets: [HomDGCat Wiki](https://homdgcat.wiki/gi/maze?lang=EN)
+Season data and image assets retrieved from [HomDGCat Wiki](https://homdgcat.wiki/gi/maze?lang=EN)
