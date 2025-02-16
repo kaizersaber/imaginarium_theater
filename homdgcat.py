@@ -13,7 +13,7 @@ SEASON_FILE = "seasons.csv"
 
 
 def write_to_csvs():
-    timer = PerfProcTimer("Pulling season information from HomDGCat Wiki...")
+    timer = PerfProcTimer("Retrieving data from HomDGCat Wiki...")
     character_df = scrape_character_data()
     character_df.to_csv(file_path(CHARACTER_FILE), index=False)
     season_df = scrape_season_data()
