@@ -1,6 +1,8 @@
 from shiny import ui
 import load_data
 
+FONT_FAMILY = "Poppins"
+
 
 def ui_season_info() -> list:
     titles = [

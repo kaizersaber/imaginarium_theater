@@ -12,15 +12,18 @@ from ui_elements import (
     ui_credits,
     ui_imgs,
     ui_update_inventory,
+    FONT_FAMILY,
 )
 
 app_ui = ui.page_fluid(
     ui.input_dark_mode(),
     ui.tags.link(
-        rel="stylesheet", href="https://fonts.googleapis.com/css2?family=Newsreader"
+        rel="stylesheet", href=f"https://fonts.googleapis.com/css2?family={FONT_FAMILY}"
     ),
-    ui.tags.style("body { font-family: 'Newsreader'}"),
-    ui.tags.style(".tooltip { background-color: black; font-family: 'Newsreader'}"),
+    ui.tags.style(f"body {{ font-family: '{FONT_FAMILY}'}}"),
+    ui.tags.style(
+        f".tooltip {{ background-color: black; font-family: '{FONT_FAMILY}'}}"
+    ),
     ui.row(
         ui.panel_title("Imaginarium Theater"),
         ui.div(
