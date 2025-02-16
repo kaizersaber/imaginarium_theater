@@ -3,7 +3,7 @@ import re
 import ast
 import pandas as pd
 from datetime import datetime, date
-from load_data import file_path, character_names
+from load_data import file_path, character_id_to_name, element_label
 from timer import PerfProcTimer
 
 HOMDGCAT_WIKI_PATH = "https://homdgcat.wiki/gi/EN"
@@ -27,7 +27,7 @@ def scrape_character_data() -> pd.DataFrame:
     pattern = "_AvatarInfoConfig = (.*?)\n\nvar"
     str_list = re.findall(pattern, str_response, re.DOTALL)[0]
     character_list = ast.literal_eval(str_list)
-    elem_label = _element_label()
+    elem_label = element_label(invert=True)
     df = pd.DataFrame(
         columns=["character", "id", "element", "img_path"],
         data=[
@@ -37,19 +37,6 @@ def scrape_character_data() -> pd.DataFrame:
     )
     df = df[df["character"] != "Traveler"].sort_values("character")
     return df
-
-
-def _element_label() -> dict[str]:
-    elements = {
-        "Elec": "Electro",
-        "Wind": "Anemo",
-        "Ice": "Cryo",
-        "Fire": "Pyro",
-        "Rock": "Geo",
-        "Water": "Hydro",
-        "Grass": "Dendro",
-    }
-    return elements
 
 
 def scrape_season_data() -> pd.DataFrame:
@@ -82,27 +69,14 @@ def _scrape_dates_from(seasons: list) -> list[date]:
 
 
 def _scrape_elements_from(seasons: list) -> list[str]:
-    element_labels = _element_label()
-    return [[element_labels[e] for e in s["Elem"]] for s in seasons]
-
-
-def _element_label() -> dict[str, str]:
-    element_labels = {
-        "Fire": "Pyro",
-        "Water": "Hydro",
-        "Ice": "Cryo",
-        "Elec": "Electro",
-        "Grass": "Dendro",
-        "Wind": "Anemo",
-        "Rock": "Geo",
-    }
-    return element_labels
+    element_label = element_label(invert=True)
+    return [[element_label[e] for e in s["Elem"]] for s in seasons]
 
 
 def _scrape_characters_from(seasons: list) -> tuple[list[str], list[str]]:
-    name = character_names()
-    op_characters = [[name[c["ID"]] for c in s["Initial"]] for s in seasons]
-    special_invites = [[name[c["ID"]] for c in s["Invitation"]] for s in seasons]
+    id_to_name = character_id_to_name()
+    op_characters = [[id_to_name[c["ID"]] for c in s["Initial"]] for s in seasons]
+    special_invites = [[id_to_name[c["ID"]] for c in s["Invitation"]] for s in seasons]
     return op_characters, special_invites
 
 

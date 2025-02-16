@@ -2,8 +2,9 @@ import pandas as pd
 from pathlib import Path
 from datetime import datetime, date
 
-HOMDGCAT_WIKI_IMG_PATH = "https://homdgcat.wiki/homdgcat-res/Avatar/"
-GI_WIKI_IMG_PATH = "https://static.wikia.nocookie.net/gensin-impact/images/"
+HOMDGCAT_RES_PATH = "https://homdgcat.wiki/homdgcat-res"
+HOMDGCAT_ELEM_IMG_PATH = f"{HOMDGCAT_RES_PATH}/Csxylic"
+HOMDGCAT_CHAR_IMG_PATH = f"{HOMDGCAT_RES_PATH}/Avatar"
 
 
 def file_path(path: str) -> str:
@@ -23,18 +24,28 @@ def character_keys() -> dict:
 
 
 def element_img_paths() -> dict:
-    return {
-        "Anemo": f"{GI_WIKI_IMG_PATH}/1/10/Element_Anemo.svg",
-        "Cryo": f"{GI_WIKI_IMG_PATH}/7/72/Element_Cryo.svg",
-        "Dendro": f"{GI_WIKI_IMG_PATH}/7/73/Element_Dendro.svg",
-        "Electro": f"{GI_WIKI_IMG_PATH}/f/ff/Element_Electro.svg",
-        "Geo": f"{GI_WIKI_IMG_PATH}/9/9b/Element_Geo.svg",
-        "Hydro": f"{GI_WIKI_IMG_PATH}/8/80/Element_Hydro.svg",
-        "Pyro": f"{GI_WIKI_IMG_PATH}/2/2c/Element_Pyro.svg",
+    elements = pd.unique(characters()["element"])
+    elem_label = element_label()
+    img_paths = {e: f"{HOMDGCAT_ELEM_IMG_PATH}/{elem_label[e]}.png" for e in elements}
+    return img_paths
+
+
+def element_label(invert: bool = False) -> dict[str]:
+    elements = {
+        "Electro": "Elec",
+        "Anemo": "Wind",
+        "Cryo": "Ice",
+        "Pyro": "Fire",
+        "Geo": "Rock",
+        "Hydro": "Water",
+        "Dendro": "Grass",
     }
+    if invert:
+        elements = {v: k for k, v in elements.items}
+    return elements
 
 
-def character_names() -> dict:
+def character_id_to_name() -> dict:
     character_df = characters()
     ids = character_df["id"].tolist()
     names = character_df["character"].tolist()
@@ -44,15 +55,17 @@ def character_names() -> dict:
 def character_img_paths() -> dict:
     character_df = characters()
     names = character_df["character"].tolist()
-    img_paths = (HOMDGCAT_WIKI_IMG_PATH + character_df["img_path"]).tolist()
+    img_paths = [
+        f"{HOMDGCAT_CHAR_IMG_PATH}/{path}" for path in character_df["img_path"]
+    ]
     return {n: p for n, p in zip(names, img_paths)}
 
 
 def traveler_img_path(player_choice: str) -> str:
     if player_choice == "Aether":
-        return f"{HOMDGCAT_WIKI_IMG_PATH}/UI_AvatarIcon_PlayerBoy.png"
+        return f"{HOMDGCAT_CHAR_IMG_PATH}/UI_AvatarIcon_PlayerBoy.png"
     elif player_choice == "Lumine":
-        return f"{HOMDGCAT_WIKI_IMG_PATH}/UI_AvatarIcon_PlayerGirl.png"
+        return f"{HOMDGCAT_CHAR_IMG_PATH}/UI_AvatarIcon_PlayerGirl.png"
 
 
 def season_labels() -> list[str]:
