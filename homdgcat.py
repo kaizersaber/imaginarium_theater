@@ -69,8 +69,8 @@ def _scrape_dates_from(seasons: list) -> list[date]:
 
 
 def _scrape_elements_from(seasons: list) -> list[str]:
-    element_label = element_label(invert=True)
-    return [[element_label[e] for e in s["Elem"]] for s in seasons]
+    elem_label = element_label(invert=True)
+    return [[elem_label[e] for e in s["Elem"]] for s in seasons]
 
 
 def _scrape_characters_from(seasons: list) -> tuple[list[str], list[str]]:

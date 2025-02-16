@@ -41,7 +41,7 @@ def element_label(invert: bool = False) -> dict[str]:
         "Dendro": "Grass",
     }
     if invert:
-        elements = {v: k for k, v in elements.items}
+        elements = {v: k for k, v in elements.items()}
     return elements
 
 
