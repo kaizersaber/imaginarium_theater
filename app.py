@@ -62,29 +62,17 @@ app_ui = ui.page_fluid(
             ),
             ui.column(
                 4,
-                "Customize Traveler",
+                ui.input_checkbox(
+                    id="include_traveler",
+                    label="Include Traveler",
+                    value=True,
+                ),
                 ui.p(),
-                ui.row(
-                    ui.column(
-                        6,
-                        ui.input_checkbox(
-                            id="include_traveler",
-                            label="Include ",
-                            value=True,
-                        ),
-                        align="right",
-                        style="margin-top:6px",
-                    ),
-                    ui.column(
-                        6,
-                        ui.input_selectize(
-                            id="traveler_name",
-                            label="",
-                            choices=["Aether", "Lumine"],
-                            width="100px",
-                        ),
-                        align="left",
-                    ),
+                ui.input_selectize(
+                    id="traveler_name",
+                    label="",
+                    choices=["Aether", "Lumine"],
+                    width="120px",
                 ),
             ),
             ui.column(
