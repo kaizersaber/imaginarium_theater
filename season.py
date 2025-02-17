@@ -75,16 +75,15 @@ class Season:
             ["op", "special_invites"],
             [chars_from_op, chars_from_special_invite],
         )
-        d.update(
-            {
-                section: {
-                    "characters": chars,
-                    "img_names_and_paths": Season._char_imgs(chars),
-                }
-                for section, chars in sections_and_characters
-                if len(chars) > 0
+        character_sections = {
+            section: {
+                "characters": chars,
+                "img_names_and_paths": Season._char_imgs(chars),
             }
-        )
+            for section, chars in sections_and_characters
+            if len(chars) > 0
+        }
+        d.update(character_sections)
 
     def _add_traveler_section_to_dict(d: dict, traveler_name: str = "Aether"):
         traveler_section = {
