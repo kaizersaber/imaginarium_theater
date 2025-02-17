@@ -50,7 +50,7 @@ def scrape_season_data() -> pd.DataFrame:
     return season_df
 
 
-def _get_season_info() -> tuple[list, list]:
+def _get_season_info() -> tuple[list]:
     response = requests.get(f"{HOMDGCAT_WIKI_PATH}/maze.js")
     str_response = str(response.content.decode("utf-8"))
     season_dates = _find_in(str_response, pattern="_plane = (.*?)\n\nvar")
@@ -73,14 +73,14 @@ def _scrape_elements_from(seasons: list) -> list[str]:
     return [[elem_label[e] for e in s["Elem"]] for s in seasons]
 
 
-def _scrape_characters_from(seasons: list) -> tuple[list[str], list[str]]:
+def _scrape_characters_from(seasons: list) -> tuple[list[str]]:
     id_to_name = character_id_to_name()
     op_characters = [[id_to_name[c["ID"]] for c in s["Initial"]] for s in seasons]
     special_invites = [[id_to_name[c["ID"]] for c in s["Invitation"]] for s in seasons]
     return op_characters, special_invites
 
 
-def _build_season_df(season_data: tuple[list, list, list, list]) -> pd.DataFrame:
+def _build_season_df(season_data: tuple[list]) -> pd.DataFrame:
     season_df = pd.DataFrame(
         [[date] + elem + op + spec for date, elem, op, spec in season_data],
         columns=["date"]
