@@ -29,9 +29,15 @@ def scrape_character_data() -> pd.DataFrame:
     character_list = ast.literal_eval(str_list)
     elem_label = element_label(invert=True)
     df = pd.DataFrame(
-        columns=["character", "id", "element", "img_path"],
+        columns=["character", "id", "star", "element", "img_path"],
         data=[
-            (c["Name"], c["_id"], elem_label[c["Element"]], f"{c["Icon"]}.png")
+            (
+                c["Name"],
+                c["_id"],
+                c["Grade"],
+                elem_label[c["Element"]],
+                f"{c["Icon"]}.png",
+            )
             for c in character_list
         ],
     )
