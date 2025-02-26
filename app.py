@@ -2,6 +2,7 @@ from shiny import ui, reactive, App, render
 from datetime import datetime
 from faicons import icon_svg
 import json
+from pathlib import Path
 
 import load_data
 from season import Season
@@ -265,4 +266,4 @@ def server(input, output, session):
         return elig_char_breakdown().ui_imgs_in_section("traveler")
 
 
-app = App(app_ui, server)
+app = App(app_ui, server, static_assets=Path(__file__).parent / "www")

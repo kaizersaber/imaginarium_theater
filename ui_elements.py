@@ -1,4 +1,5 @@
 from shiny import ui
+from faicons import icon_svg
 import load_data
 
 FONT_FAMILY = "Poppins"
@@ -44,19 +45,20 @@ def ui_breakdown() -> list:
 def ui_credits() -> list:
     text_link_urls = [
         [
-            "Made by",
-            "xSaberFaye",
-            "https://www.youtube.com/@xsaberfaye",
-        ],
-        [
-            " - Data and assets from",
+            "Data and assets from",
             "HomDGCat Wiki",
             "https://homdgcat.wiki/gi/maze?lang=EN",
         ],
         [
-            " - View source code on",
-            "Github",
-            "https://github.com/kaizersaber/imaginarium_theater",
+            " - Made by xSaberFaye",
+            icon_svg("youtube"),
+            "https://www.youtube.com/@xsaberfaye",
+        ],
+        ["", icon_svg("twitch"), "https://www.twitch.tv/xsaberfaye"],
+        [
+            "",
+            ui.img(src="enka.png", width="18", height="18", style="margin-top:-3px"),
+            "https://enka.network/u/604534740/",
         ],
     ]
     credits = [
