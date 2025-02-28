@@ -57,11 +57,7 @@ def ui_credits() -> list:
         ],
         ["", icon_svg("twitch"), "https://www.twitch.tv/xsaberfaye"],
         ["", icon_svg("discord"), "https://discord.gg/a3pQPRzVUk"],
-        [
-            "",
-            icon_enka(),
-            "https://enka.network/u/604534740/",
-        ],
+        ["", icon_enka(), "https://enka.network/u/604534740/"],
     ]
     credits = [
         part
