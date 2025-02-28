@@ -33,7 +33,7 @@ app_ui = ui.page_fluid(
                 label="",
                 choices=load_data.season_labels(),
                 selected=datetime.today().strftime("%B %Y"),
-                width="170px",
+                width="200px",
             )
         ),
         align="center",
