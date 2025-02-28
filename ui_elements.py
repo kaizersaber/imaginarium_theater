@@ -56,6 +56,7 @@ def ui_credits() -> list:
             "https://www.youtube.com/@xsaberfaye",
         ],
         ["", icon_svg("twitch"), "https://www.twitch.tv/xsaberfaye"],
+        ["", icon_svg("discord"), "https://discord.gg/a3pQPRzVUk"],
         [
             "",
             icon_enka(),
