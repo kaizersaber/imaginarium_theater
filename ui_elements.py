@@ -75,7 +75,7 @@ def ui_credits() -> list:
 
 
 def icon_enka() -> ui.HTML:
-    svg_html = f"""
+    svg_html = """
     <svg viewBox="0 0 576 512" preserveAspectRatio="none" aria-hidden="true" role="img" class="fa"
         style="fill:currentColor;height:4em;width:4em;margin-left:auto;margin-right:0.2em;position:relative;vertical-align:-3.15em;overflow:visible;">
         <g transform="translate(0.000000,109.000000) scale(0.100000,-0.100000)">
