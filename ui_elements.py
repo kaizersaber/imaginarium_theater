@@ -76,8 +76,7 @@ def ui_credits() -> list:
 
 def icon_enka() -> ui.HTML:
     svg_html = f"""
-    <svg viewBox="0 0 576 512" preserveAspectRatio="none" aria-hidden="true"
-        role="img" class="fa"
+    <svg viewBox="0 0 576 512" preserveAspectRatio="none" aria-hidden="true" role="img" class="fa"
         style="fill:currentColor;height:4em;width:4em;margin-left:auto;margin-right:0.2em;position:relative;vertical-align:-3.15em;overflow:visible;">
         <g transform="translate(0.000000,109.000000) scale(0.100000,-0.100000)">
             <path d="M535 910 c-54 -94 -96 -172 -94 -174 2 -2 32 -18 66 -35 l63 -31 13 22 c8 13 23 38 34 57 l20 33 35 -58 c20 -33 73 -124 118 -204 46 -80 85 -147 87 -149 4 -6 123 51 130 62 4 7 -337 608 -362 635 -9 10 -32 -22 -110 -158z"/>
