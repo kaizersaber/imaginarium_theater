@@ -1,6 +1,6 @@
 import requests
 import re
-import ast
+import json
 import pandas as pd
 from datetime import datetime, date
 from load_data import file_path, character_id_to_name, element_label
@@ -26,7 +26,7 @@ def scrape_character_data() -> pd.DataFrame:
     str_response = str(response.content.decode("utf-8"))
     pattern = "_AvatarInfoConfig = (.*?)\n\nvar"
     str_list = re.findall(pattern, str_response, re.DOTALL)[0]
-    character_list = ast.literal_eval(str_list)
+    character_list = json.loads(str_list)
     elem_label = element_label(invert=True)
     df = pd.DataFrame(
         columns=["character", "id", "star", "element", "img_path"],
@@ -39,6 +39,7 @@ def scrape_character_data() -> pd.DataFrame:
                 f"{c["Icon"]}.png",
             )
             for c in character_list
+            if c["_name"] != "Keqing2"
         ],
     )
     df = df[df["character"] != "Traveler"].sort_values("character")
@@ -66,7 +67,7 @@ def _get_season_info() -> tuple[list]:
 
 def _find_in(response: str, pattern: str) -> list:
     str_list = re.findall(pattern, response, re.DOTALL)[0]
-    return ast.literal_eval(str_list)
+    return json.loads(str_list)
 
 
 def _scrape_dates_from(seasons: list) -> list[date]:
