@@ -1,4 +1,5 @@
 character,id,star,element,img_path
+Aino,121,4,Hydro,UI_AvatarIcon_Aino.png
 Albedo,38,5,Geo,UI_AvatarIcon_Albedo.png
 Alhaitham,78,5,Dendro,UI_AvatarIcon_Alhatham.png
 Aloy,62,5,Cryo,UI_AvatarIcon_Aloy.png
@@ -29,6 +30,7 @@ Escoffier,112,5,Cryo,UI_AvatarIcon_Escoffier.png
 Eula,51,5,Cryo,UI_AvatarIcon_Eula.png
 Faruzan,76,4,Anemo,UI_AvatarIcon_Faruzan.png
 Fischl,31,4,Electro,UI_AvatarIcon_Fischl.png
+Flins,120,5,Electro,UI_AvatarIcon_Flins.png
 Freminet,85,4,Cryo,UI_AvatarIcon_Freminet.png
 Furina,89,5,Hydro,UI_AvatarIcon_Furina.png
 Gaming,92,4,Pyro,UI_AvatarIcon_Gaming.png
@@ -52,6 +54,7 @@ Klee,29,5,Pyro,UI_AvatarIcon_Klee.png
 Kujou Sara,56,4,Electro,UI_AvatarIcon_Sara.png
 Kuki Shinobu,65,4,Electro,UI_AvatarIcon_Shinobu.png
 Lan Yan,108,4,Anemo,UI_AvatarIcon_Lanyan.png
+Lauma,119,5,Dendro,UI_AvatarIcon_Lauma.png
 Layla,74,4,Cryo,UI_AvatarIcon_Layla.png
 Lisa,6,4,Electro,UI_AvatarIcon_Lisa.png
 Lynette,83,4,Anemo,UI_AvatarIcon_Linette.png

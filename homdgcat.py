@@ -1,4 +1,4 @@
-import requests
+import cloudscraper
 import re
 import json
 import pandas as pd
@@ -11,6 +11,8 @@ HOMDGCAT_WIKI_PATH = "https://homdgcat.wiki/gi/EN"
 CHARACTER_FILE = "characters.csv"
 SEASON_FILE = "seasons.csv"
 
+scraper = cloudscraper.create_scraper()
+
 
 def write_to_csvs():
     timer = PerfProcTimer("Retrieving data from HomDGCat Wiki...")
@@ -22,7 +24,7 @@ def write_to_csvs():
 
 
 def scrape_character_data() -> pd.DataFrame:
-    response = requests.get(f"{HOMDGCAT_WIKI_PATH}/avatar.js")
+    response = scraper.get(f"{HOMDGCAT_WIKI_PATH}/avatar.js")
     str_response = str(response.content.decode("utf-8"))
     pattern = "_AvatarInfoConfig = (.*?)\n\nvar"
     str_list = re.findall(pattern, str_response, re.DOTALL)[0]
@@ -58,7 +60,7 @@ def scrape_season_data() -> pd.DataFrame:
 
 
 def _get_season_info() -> tuple[list]:
-    response = requests.get(f"{HOMDGCAT_WIKI_PATH}/maze.js")
+    response = scraper.get(f"{HOMDGCAT_WIKI_PATH}/maze.js")
     str_response = str(response.content.decode("utf-8"))
     season_dates = _find_in(str_response, pattern="_plane = (.*?)\n\nvar")
     season_elem_chars = _find_in(str_response, pattern="_overall = (.*?)\n\nvar")
