@@ -183,7 +183,7 @@ def server(input, output, session):
         if highest_tier is None:
             text = f"You do not have enough characters to participate this season."
         else:
-            text = f"The highest difficulty you can challenge this season is {highest_tier}."
+            text = f"The highest difficulty you can challenge this season is {highest_tier} Mode."
         return text
 
     @render.text
@@ -191,12 +191,12 @@ def server(input, output, session):
         count = elig_char_breakdown().n_chars()
         next_tier = selected_season().next_tier(count)
         if next_tier is None:
-            text = " You have reached the highest difficulty tier this season."
+            text = " You have reached the highest difficulty this season."
         else:
             increment = next_tier["increment"]
             suffix = "s" if increment > 1 else ""
             text = f" You need {next_tier["increment"]} more character{suffix} "
-            text += f"to challenge {next_tier["name"]} difficulty."
+            text += f"to challenge {next_tier["name"]} Mode."
         return text
 
     @reactive.calc
