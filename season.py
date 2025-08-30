@@ -130,11 +130,11 @@ class Season:
     def get_tier_counts(self) -> list[int]:
         if self.date < datetime(2024, 9, 1).date():
             return [10, 14, 18]
-        elif self.date < datetime(2025, 11, 1).date():
+        elif self.date < datetime(2025, 10, 1).date():
             return [8, 12, 16, 22]
         else:
             return [8, 12, 16, 22, 28]
 
     def get_tier_names(self, tier_counts: list[int]) -> list[str]:
-        tiers = ["Easy", "Normal", "Hard", "Visionary", "Cursed Moon"]
+        tiers = ["Easy", "Normal", "Hard", "Visionary", "Lunar"]
         return tiers[0 : len(tier_counts)]
