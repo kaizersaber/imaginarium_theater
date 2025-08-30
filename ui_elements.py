@@ -1,7 +1,6 @@
 from shiny import ui
 from faicons import icon_svg
 import load_data
-import re
 
 FONT_FAMILY = "Poppins"
 
