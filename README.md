@@ -40,17 +40,19 @@ The general formula for counting is as follows:
 
 The final number of characters you have is then compared against the table below:
 
-| Difficulty | Eligible Character Count Requirement |
+| Mode | Minimum Characters Required|
 | --- | --- |
 | Easy | 8 |
 | Normal | 12 |
 | Hard | 16 |
 | Visionary | 22 |
+| Lunar | 28 |
 
 For example, a player must have 16 eligible characters to be able to play Hard mode on Imaginarium Theater.
 
-_Note that prior to September 2024, there was no visionary tier, and the difficulty requirements for Easy, Normal, Hard were 10, 14, 18 respectively._
+_Note that prior to September 2024, there was no **Visionary** mode, and the difficulty requirements for **Easy**, **Normal**, **Hard** were 10, 14, 18 respectively._
 
+_Note that **Lunar** mode was only introduced beginning in October 2025._
 
 ## Credits
 Season data and image assets retrieved from [HomDGCat Wiki](https://homdgcat.wiki/gi/maze?lang=EN)
