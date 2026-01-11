@@ -45,7 +45,12 @@ def ui_breakdown() -> list:
 def ui_credits() -> list:
     text_link_urls = [
         [
-            "Data and assets from",
+            "Data and character assets from",
+            "Hakush.in",
+            "https://gi20.hakush.in/rolecombat",
+        ],
+        [
+            "Element assets from",
             "HomDGCat Wiki",
             "https://homdgcat.wiki/gi/maze?lang=EN",
         ],

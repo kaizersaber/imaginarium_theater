@@ -1,3 +1,3 @@
-import homdgcat
+import hakushin
 
-homdgcat.write_to_csvs()
+hakushin.scrape_to_csvs()
