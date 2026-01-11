@@ -1,10 +1,9 @@
 import cloudscraper
-import re
 import json
 import pandas as pd
-from datetime import datetime, date
+from datetime import date
 from dateutil.relativedelta import relativedelta
-from load_data import file_path, character_id_to_name, element_label
+from load_data import file_path, character_id_to_name
 from timer import PerfProcTimer
 
 

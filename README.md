@@ -55,4 +55,4 @@ _Note that prior to September 2024, there was no **Visionary** mode, and the dif
 _Note that **Lunar** mode was only introduced beginning in October 2025._
 
 ## Credits
-Season data and image assets retrieved from [HomDGCat Wiki](https://homdgcat.wiki/gi/maze?lang=EN)
+Season data and character assets retrieved from [Hakush.in](https://gi20.hakush.in/rolecombat), element assets retrieved from [HomDGCat Wiki](https://homdgcat.wiki/gi/maze?lang=EN)

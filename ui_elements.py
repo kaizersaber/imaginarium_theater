@@ -50,7 +50,7 @@ def ui_credits() -> list:
             "https://gi20.hakush.in/rolecombat",
         ],
         [
-            "Element assets from",
+            " - Element assets from",
             "HomDGCat Wiki",
             "https://homdgcat.wiki/gi/maze?lang=EN",
         ],
