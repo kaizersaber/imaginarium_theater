@@ -53,7 +53,3 @@ For example, a player must have 16 eligible characters to be able to play Hard m
 _Note that prior to September 2024, there was no **Visionary** mode, and the difficulty requirements for **Easy**, **Normal**, **Hard** were 10, 14, 18 respectively._
 
 _Note that **Lunar** mode was only introduced beginning in October 2025._
-
-## Credits
-- Season data and character assets retrieved from [Hakush.in](https://gi20.hakush.in/rolecombat)
-- Element assets retrieved from [HomDGCat Wiki](https://homdgcat.wiki/gi/maze?lang=EN)
