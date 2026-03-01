@@ -266,4 +266,4 @@ def server(input, output, session):
         return elig_char_breakdown().ui_imgs_in_section("traveler")
 
 
-app = App(app_ui, server, static_assets=Path(__file__).parent / "www")
+app = App(app_ui, server, static_assets=Path(__file__).parent / "assets")

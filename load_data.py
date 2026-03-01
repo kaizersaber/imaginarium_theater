@@ -2,10 +2,8 @@ import pandas as pd
 from pathlib import Path
 from datetime import datetime, date
 
-HOMDGCAT_RES_PATH = "https://homdgcat.wiki/homdgcat-res"
-HAKUSHIN_PATH = "https://api.hakush.in/gi"
-HAKUSHIN_CHAR_IMG_PATH = f"{HAKUSHIN_PATH}/UI"
-HOMDGCAT_ELEM_IMG_PATH = f"{HOMDGCAT_RES_PATH}/Csxylic"
+CHAR_IMG_PATH = f"characters"
+ELEM_IMG_PATH = f"elements"
 
 
 def file_path(path: str) -> str:
@@ -26,8 +24,7 @@ def character_keys() -> dict:
 
 def element_img_paths() -> dict:
     elements = pd.unique(characters()["element"])
-    elem_label = element_label()
-    img_paths = {e: f"{HOMDGCAT_ELEM_IMG_PATH}/{elem_label[e]}.png" for e in elements}
+    img_paths = {e: f"{ELEM_IMG_PATH}/{e}.svg" for e in elements}
     return img_paths
 
 
@@ -56,17 +53,12 @@ def character_id_to_name() -> dict:
 def character_img_paths() -> dict:
     character_df = characters()
     names = character_df["character"].tolist()
-    img_paths = [
-        f"{HAKUSHIN_CHAR_IMG_PATH}/{path}" for path in character_df["img_path"]
-    ]
+    img_paths = [f"{CHAR_IMG_PATH}/{path}" for path in character_df["img_path"]]
     return {n: p for n, p in zip(names, img_paths)}
 
 
 def traveler_img_path(player_choice: str) -> str:
-    if player_choice == "Aether":
-        return f"{HAKUSHIN_CHAR_IMG_PATH}/UI_AvatarIcon_PlayerBoy.webp"
-    elif player_choice == "Lumine":
-        return f"{HAKUSHIN_CHAR_IMG_PATH}/UI_AvatarIcon_PlayerGirl.webp"
+    return f"{CHAR_IMG_PATH}/{player_choice}.png"
 
 
 def season_labels() -> list[str]:
